@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>אילן פרץ | יועץ משכנתאות | קבוצת המשכן</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --teal:#1a6b72;
+  --teal-dark:#0d4a50;
+  --teal-deep:#07373c;
+  --teal-mid:#1e7d85;
+  --teal-light:rgba(26,107,114,0.12);
+  --gold:#c49a2e;
+  --gold2:#d4a93a;
+  --gold-pale:rgba(196,154,46,0.12);
+  --gold-border:rgba(196,154,46,0.3);
+  --cream:#f0e9d6;
+  --cream2:#e8dfc8;
+  --white:#ffffff;
+  --bg:#f4f7f8;
+  --text:#1a2e30;
+  --muted:#5a7a7d;
+  --card-shadow:0 8px 40px rgba(7,55,60,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Frank Ruhl Libre','Heebo',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden;}
+
+/* ===================== NAV ===================== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  height:66px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;
+  background:rgba(7,55,60,0.97);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(196,154,46,0.2);
+  transition:box-shadow .3s;
+}
+nav.scrolled{box-shadow:0 4px 28px rgba(7,55,60,0.4);}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.logo-bird{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+  color:var(--teal-deep);font-size:17px;
+  box-shadow:0 4px 12px rgba(196,154,46,0.4);
+  font-weight:900;
+}
+.logo-name{font-family:'Frank Ruhl Libre',serif;font-weight:700;font-size:16px;color:var(--cream);line-height:1.15;}
+.logo-role{font-size:10.5px;color:rgba(196,154,46,0.8);font-weight:400;}
+.nav-links{list-style:none;display:flex;gap:24px;align-items:center;}
+.nav-links a{text-decoration:none;font-size:13.5px;font-weight:500;color:rgba(240,233,214,0.75);transition:color .2s;font-family:'Heebo',sans-serif;}
+.nav-links a:hover{color:var(--gold2);}
+.nav-cta-btn{
+  background:linear-gradient(135deg,var(--gold2),var(--gold))!important;
+  color:var(--teal-deep)!important;
+  padding:9px 20px;border-radius:8px;font-weight:800!important;
+  font-size:13px!important;
+  transition:transform .15s,box-shadow .15s!important;
+  box-shadow:0 4px 16px rgba(196,154,46,0.35)!important;
+  font-family:'Heebo',sans-serif!important;
+}
+.nav-cta-btn:hover{transform:translateY(-1px)!important;box-shadow:0 8px 24px rgba(196,154,46,0.5)!important;}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{width:22px;height:2px;background:var(--cream);border-radius:2px;transition:all .3s;}
+.mobile-nav{display:none;position:fixed;top:66px;right:0;left:0;background:rgba(7,55,60,0.98);padding:20px 5% 28px;z-index:299;border-bottom:1px solid rgba(196,154,46,0.2);flex-direction:column;gap:0;}
+.mobile-nav a{display:block;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(240,233,214,0.85);text-decoration:none;font-size:15px;font-family:'Heebo',sans-serif;}
+.mobile-nav a:last-child{border-bottom:none;margin-top:12px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--teal-deep);text-align:center;padding:13px;border-radius:8px;font-weight:800;}
+.mobile-nav.open{display:flex;}
+
+/* ===================== TABS / SECTION NAV ===================== */
+.section-tabs{
+  position:sticky;top:66px;z-index:200;
+  background:rgba(7,55,60,0.96);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(196,154,46,0.15);
+  display:flex;justify-content:center;align-items:center;
+  padding:0 4%;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.section-tabs::-webkit-scrollbar{display:none;}
+.tab-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  color:rgba(240,233,214,0.6);
+  font-family:'Heebo',sans-serif;
+  font-size:13px;font-weight:600;
+  padding:14px 18px;
+  border-bottom:2.5px solid transparent;
+  cursor:pointer;white-space:nowrap;
+  transition:all .25s;text-decoration:none;
+  border-top:none;border-left:none;border-right:none;
+  background:none;
+}
+.tab-btn i{font-size:13px;}
+.tab-btn:hover,.tab-btn.active{color:var(--gold2);border-bottom-color:var(--gold2);}
+
+/* ===================== HERO ===================== */
+#hero{
+  min-height:100vh;padding-top:110px;
+  background:linear-gradient(145deg,#07373c 0%,#0d4a50 40%,#1a6b72 80%,#07373c 100%);
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+}
+.hero-texture{
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(196,154,46,0.12) 0%,transparent 70%);top:-100px;left:-200px;pointer-events:none;}
+.hero-glow2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(26,107,114,0.3) 0%,transparent 70%);bottom:-80px;right:10%;pointer-events:none;}
+
+.hero-inner{
+  max-width:1180px;margin:0 auto;width:100%;padding:60px 5% 80px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:50px;position:relative;z-index:1;
+}
+.hero-content{flex:1;max-width:540px;animation:fadeUp .9s ease both;}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(196,154,46,0.15);
+  border:1px solid rgba(196,154,46,0.35);
+  color:var(--gold2);font-size:11.5px;font-weight:700;
+  padding:7px 16px;border-radius:40px;margin-bottom:24px;
+  letter-spacing:.8px;text-transform:uppercase;
+  font-family:'Heebo',sans-serif;
+}
+
+.hero-name{
+  font-family:'Frank Ruhl Libre',serif;
+  font-weight:900;
+  font-size:clamp(56px,6.5vw,84px);
+  color:var(--cream);
+  line-height:.92;
+  letter-spacing:-1px;
+  margin-bottom:8px;
+}
+.hero-name-under{
+  width:80px;height:3px;
+  background:linear-gradient(to left,var(--gold2),var(--gold));
+  border-radius:2px;margin:12px 0 20px;
+}
+.hero-profession{
+  font-size:clamp(16px,2vw,20px);
+  font-weight:400;
+  color:rgba(196,154,46,0.9);
+  margin-bottom:16px;
+  font-family:'Heebo',sans-serif;
+}
+.hero-tagline{
+  font-size:clamp(15px,1.8vw,18px);
+  color:rgba(240,233,214,0.8);
+  line-height:1.75;
+  margin-bottom:40px;
+  font-weight:300;
+  font-family:'Heebo',sans-serif;
+}
+.hero-tagline strong{color:var(--cream);font-weight:700;}
+
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:50px;}
+.btn-gold{
+  display:inline-flex;align-items:center;gap:9px;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  color:var(--teal-deep);padding:15px 28px;border-radius:10px;
+  font-size:15px;font-weight:800;text-decoration:none;
+  box-shadow:0 8px 28px rgba(196,154,46,0.4);
+  transition:transform .2s,box-shadow .2s;
+  font-family:'Heebo',sans-serif;
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(196,154,46,0.55);}
+.btn-outline-white{
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(255,255,255,0.08);color:var(--cream);
+  padding:14px 24px;border-radius:10px;
+  font-size:14px;font-weight:600;text-decoration:none;
+  border:1.5px solid rgba(240,233,214,0.25);
+  transition:all .2s;font-family:'Heebo',sans-serif;
+}
+.btn-outline-white:hover{background:rgba(255,255,255,0.15);border-color:rgba(240,233,214,0.5);}
+
+.hero-stats{display:flex;gap:0;align-items:stretch;}
+.stat{padding:14px 28px 14px 0;border-left:1px solid rgba(196,154,46,0.2);}
+.stat:first-child{padding-right:0;border-left:none;padding-left:0;}
+.stat:last-child{padding-left:28px;}
+.s-num{font-family:'Frank Ruhl Libre',serif;font-size:30px;font-weight:900;color:var(--gold2);line-height:1;}
+.s-label{font-size:11px;color:rgba(240,233,214,0.6);font-weight:500;margin-top:4px;font-family:'Heebo',sans-serif;}
+
+/* PHOTO */
+.hero-photo{flex:0 0 380px;animation:fadeUp .9s .15s ease both;position:relative;}
+.photo-frame{
+  width:350px;height:440px;
+  border-radius:50% 50% 50% 50% / 40% 40% 60% 60%;
+  overflow:hidden;
+  box-shadow:0 32px 80px rgba(0,0,0,0.4),0 0 0 4px rgba(196,154,46,0.3),0 0 0 8px rgba(196,154,46,0.1);
+  position:relative;
+  background:var(--teal-dark);
+}
+.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
+.photo-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(7,55,60,0.35) 100%);pointer-events:none;}
+
+.float-badge{
+  position:absolute;
+  background:rgba(255,255,255,0.97);border-radius:14px;
+  padding:12px 16px;
+  box-shadow:0 12px 40px rgba(7,55,60,0.25);
+  backdrop-filter:blur(10px);
+}
+.fb1{bottom:30px;right:-20px;animation:floatY 3.5s ease-in-out infinite;}
+.fb2{top:50px;left:-25px;animation:floatY 3.5s 1.7s ease-in-out infinite;}
+.fb-inner{display:flex;align-items:center;gap:10px;}
+.fb-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.fb-icon.g{background:var(--gold-pale);color:var(--gold);}
+.fb-icon.t{background:rgba(26,107,114,0.1);color:var(--teal);}
+.fb-lbl{font-size:10px;color:var(--muted);font-weight:500;font-family:'Heebo',sans-serif;}
+.fb-val{font-size:14px;font-weight:800;color:var(--text);line-height:1.2;font-family:'Frank Ruhl Libre',serif;}
+
+/* TRUST BAND */
+.trust-band{
+  background:var(--cream2);
+  padding:22px 5%;
+  display:flex;justify-content:center;align-items:center;
+  gap:40px;flex-wrap:wrap;
+  border-bottom:1px solid rgba(196,154,46,0.15);
+}
+.t-item{display:flex;align-items:center;gap:9px;color:var(--teal-dark);font-size:13px;font-weight:600;font-family:'Heebo',sans-serif;}
+.t-item i{color:var(--gold);font-size:15px;}
+.t-sep{width:1px;height:20px;background:rgba(196,154,46,0.3);}
+
+/* ===================== SECTIONS ===================== */
+.sec{padding:90px 5%;max-width:1180px;margin:0 auto;}
+.sec-label{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--gold);font-size:11.5px;font-weight:700;
+  text-transform:uppercase;letter-spacing:2.5px;
+  margin-bottom:14px;font-family:'Heebo',sans-serif;
+}
+.sec-h{
+  font-family:'Frank Ruhl Libre',serif;
+  font-size:clamp(30px,3.8vw,46px);
+  font-weight:900;color:var(--teal-deep);
+  line-height:1.1;margin-bottom:16px;
+}
+.sec-p{font-size:16px;color:var(--muted);line-height:1.8;font-family:'Heebo',sans-serif;font-weight:400;}
+
+/* Dark section */
+.dark-section{background:var(--teal-deep);}
+.dark-section .sec-h{color:var(--cream);}
+.dark-section .sec-p{color:rgba(240,233,214,0.7);}
+.dark-section .sec-label{color:var(--gold2);}
+
+/* ===================== ABOUT ===================== */
+#about{background:var(--white);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+.about-visual{position:relative;}
+.about-img-wrap{
+  position:relative;
+  border-radius:20px;overflow:hidden;
+  box-shadow:0 24px 60px rgba(7,55,60,0.2);
+}
+.about-img-wrap img{width:100%;height:480px;object-fit:cover;object-position:top;display:block;}
+.about-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(7,55,60,0.4) 100%);}
+.about-name-card{
+  position:absolute;bottom:24px;right:24px;left:24px;
+  background:rgba(255,255,255,0.96);
+  border-radius:14px;padding:16px 20px;
+  display:flex;align-items:center;gap:16px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.15);
+  backdrop-filter:blur(10px);
+}
+.about-avatar{
+  width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),var(--teal-dark));
+  display:flex;align-items:center;justify-content:center;
+  color:var(--cream);font-family:'Frank Ruhl Libre',serif;font-size:18px;font-weight:900;
+  flex-shrink:0;border:3px solid var(--gold2);
+}
+.about-card-name{font-family:'Frank Ruhl Libre',serif;font-size:16px;font-weight:900;color:var(--teal-deep);}
+.about-card-role{font-size:11.5px;color:var(--muted);font-family:'Heebo',sans-serif;margin-top:2px;}
+.exp-chips{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;}
+.exp-chip{
+  background:var(--teal-deep);color:var(--cream);
+  border-radius:10px;padding:12px 20px;text-align:center;
+  box-shadow:0 4px 16px rgba(7,55,60,0.2);
+}
+.exp-n{font-family:'Frank Ruhl Libre',serif;font-size:26px;font-weight:900;color:var(--gold2);}
+.exp-t{font-size:11px;color:rgba(240,233,214,0.7);font-family:'Heebo',sans-serif;margin-top:2px;}
+
+.about-list{display:flex;flex-direction:column;gap:20px;margin-top:28px;}
+.a-item{display:flex;gap:16px;align-items:flex-start;}
+.a-icon{
+  width:44px;height:44px;border-radius:12px;flex-shrink:0;
+  background:rgba(26,107,114,0.1);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--teal);font-size:17px;
+  border:1px solid rgba(26,107,114,0.15);
+}
+.a-h4{font-family:'Frank Ruhl Libre',serif;font-size:15.5px;font-weight:700;color:var(--teal-deep);margin-bottom:4px;}
+.a-p{font-size:13.5px;color:var(--muted);line-height:1.7;font-family:'Heebo',sans-serif;}
+
+/* ===================== SERVICES ===================== */
+#services{background:var(--bg);}
+.srv-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;margin-top:50px;
+}
+.srv-card{
+  background:var(--white);
+  border-radius:18px;padding:30px 26px;
+  border:1px solid rgba(26,107,114,0.08);
+  box-shadow:var(--card-shadow);
+  transition:transform .25s,box-shadow .25s;
+  position:relative;overflow:hidden;
+}
+.srv-card::before{
+  content:'';position:absolute;top:0;right:0;
+  width:80px;height:80px;
+  background:radial-gradient(circle at top right,rgba(196,154,46,0.07),transparent 70%);
+  pointer-events:none;
+}
+.srv-card:hover{transform:translateY(-5px);box-shadow:0 20px 60px rgba(7,55,60,0.15);}
+.srv-card.dark{background:var(--teal-deep);border-color:transparent;}
+.srv-card.dark .srv-h{color:var(--cream);}
+.srv-card.dark .srv-p{color:rgba(240,233,214,0.65);}
+.srv-card.dark .srv-ico{background:rgba(196,154,46,0.15);color:var(--gold2);border-color:rgba(196,154,46,0.2);}
+.srv-card.premium{background:linear-gradient(135deg,var(--teal-dark),var(--teal-deep));border:1px solid rgba(196,154,46,0.3);}
+.srv-card.premium .srv-h{color:var(--gold2);}
+.srv-card.premium .srv-p{color:rgba(240,233,214,0.75);}
+.srv-card.premium .srv-ico{background:rgba(196,154,46,0.15);color:var(--gold2);}
+.srv-ico{
+  width:52px;height:52px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;margin-bottom:18px;
+  background:rgba(26,107,114,0.08);
+  color:var(--teal);border:1px solid rgba(26,107,114,0.1);
+  transition:background .2s;
+}
+.srv-card:hover .srv-ico{background:rgba(26,107,114,0.14);}
+.srv-h{font-family:'Frank Ruhl Libre',serif;font-size:17px;font-weight:900;color:var(--teal-deep);margin-bottom:10px;}
+.srv-p{font-size:13.5px;color:var(--muted);line-height:1.7;font-family:'Heebo',sans-serif;}
+.srv-badge{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  color:var(--teal-deep);
+  font-size:10px;font-weight:800;
+  padding:3px 10px;border-radius:20px;
+  margin-bottom:12px;font-family:'Heebo',sans-serif;
+  letter-spacing:.5px;
+}
+
+/* ===================== GUIDES / BUTTONS ===================== */
+#guides{background:var(--teal-deep);}
+.guides-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:44px;}
+.guide-card{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(196,154,46,0.2);
+  border-radius:16px;padding:28px;
+  display:flex;align-items:center;gap:18px;
+  text-decoration:none;
+  transition:background .25s,transform .25s,border-color .25s;
+  cursor:pointer;
+}
+.guide-card:hover{background:rgba(196,154,46,0.1);border-color:rgba(196,154,46,0.4);transform:translateY(-3px);}
+.guide-ico{
+  width:54px;height:54px;border-radius:14px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;color:var(--teal-deep);
+  box-shadow:0 6px 18px rgba(196,154,46,0.4);
+}
+.guide-title{font-family:'Frank Ruhl Libre',serif;font-size:17px;font-weight:900;color:var(--cream);margin-bottom:6px;}
+.guide-desc{font-size:12.5px;color:rgba(240,233,214,0.6);font-family:'Heebo',sans-serif;line-height:1.5;}
+.guide-arrow{margin-right:auto;flex-shrink:0;color:var(--gold2);font-size:16px;transition:transform .2s;}
+.guide-card:hover .guide-arrow{transform:translateX(-4px);}
+
+/* ===================== PROCESS ===================== */
+#process{background:var(--white);}
+.proc-timeline{
+  position:relative;
+  display:flex;flex-direction:column;gap:0;
+  margin-top:50px;
+}
+.proc-timeline::before{
+  content:'';position:absolute;
+  top:0;bottom:0;right:32px;
+  width:2px;
+  background:linear-gradient(to bottom,var(--gold2),rgba(196,154,46,0.1));
+}
+.proc-step{
+  display:flex;align-items:flex-start;gap:24px;
+  padding:0 0 40px 0;
+  position:relative;
+}
+.proc-step:last-child{padding-bottom:0;}
+.step-num{
+  width:66px;height:66px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--teal-dark),var(--teal-deep));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Frank Ruhl Libre',serif;
+  font-size:22px;font-weight:900;color:var(--gold2);
+  border:3px solid rgba(196,154,46,0.35);
+  box-shadow:0 6px 20px rgba(7,55,60,0.25);
+  position:relative;z-index:1;
+}
+.step-body{
+  background:var(--bg);border-radius:16px;padding:22px 24px;
+  flex:1;border:1px solid rgba(26,107,114,0.08);
+  box-shadow:0 4px 20px rgba(7,55,60,0.06);
+  margin-top:8px;
+}
+.step-h{font-family:'Frank Ruhl Libre',serif;font-size:17px;font-weight:900;color:var(--teal-deep);margin-bottom:7px;}
+.step-p{font-size:13.5px;color:var(--muted);line-height:1.7;font-family:'Heebo',sans-serif;}
+
+/* ===================== ADVANTAGES ===================== */
+#advantages{background:var(--bg);}
+.adv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:44px;}
+.adv-card{
+  background:var(--white);border-radius:18px;padding:28px;
+  border:1px solid rgba(26,107,114,0.08);
+  box-shadow:0 6px 24px rgba(7,55,60,0.07);
+  display:flex;gap:18px;align-items:flex-start;
+  transition:transform .2s;
+}
+.adv-card:hover{transform:translateY(-3px);}
+.adv-ico{
+  width:50px;height:50px;border-radius:14px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--teal),var(--teal-dark));
+  display:flex;align-items:center;justify-content:center;
+  color:var(--cream);font-size:20px;
+  box-shadow:0 6px 18px rgba(7,55,60,0.2);
+}
+.adv-h{font-family:'Frank Ruhl Libre',serif;font-size:16px;font-weight:900;color:var(--teal-deep);margin-bottom:7px;}
+.adv-p{font-size:13.5px;color:var(--muted);line-height:1.7;font-family:'Heebo',sans-serif;}
+
+/* ===================== TESTIMONIALS ===================== */
+#testimonials{background:var(--white);}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px;}
+.test-card{
+  background:var(--bg);border-radius:18px;padding:28px;
+  border:1px solid rgba(26,107,114,0.07);
+  box-shadow:0 6px 24px rgba(7,55,60,0.06);
+  position:relative;transition:transform .2s;
+}
+.test-card:hover{transform:translateY(-4px);}
+.test-quote{
+  font-family:'Frank Ruhl Libre',serif;
+  font-size:56px;color:var(--gold2);line-height:1;
+  margin-bottom:6px;opacity:.7;
+}
+.stars{color:var(--gold);font-size:15px;margin-bottom:14px;letter-spacing:2px;}
+.t-text{font-size:14px;color:var(--text);line-height:1.8;font-family:'Heebo',sans-serif;margin-bottom:20px;font-weight:400;}
+.t-person{display:flex;align-items:center;gap:12px;}
+.t-av{
+  width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),var(--teal-dark));
+  display:flex;align-items:center;justify-content:center;
+  color:var(--cream);font-size:13px;font-weight:800;
+  font-family:'Frank Ruhl Libre',serif;flex-shrink:0;
+}
+.t-nm{font-family:'Frank Ruhl Libre',serif;font-size:14.5px;font-weight:700;color:var(--teal-deep);}
+.t-ct{font-size:11.5px;color:var(--muted);font-family:'Heebo',sans-serif;}
+
+/* ===================== CONTACT ===================== */
+#contact{background:var(--teal-deep);}
+.contact-wrap{
+  max-width:1180px;margin:0 auto;padding:90px 5%;
+  display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:start;
+}
+.ci .sec-h{color:var(--cream);}
+.ci .sec-p{color:rgba(240,233,214,0.7);margin-top:14px;}
+.contact-channels{display:flex;flex-direction:column;gap:14px;margin-top:32px;}
+.cc-link{
+  display:flex;align-items:center;gap:14px;
+  color:rgba(240,233,214,0.8);text-decoration:none;
+  font-size:15px;font-family:'Heebo',sans-serif;font-weight:500;
+  transition:color .2s;
+}
+.cc-link:hover{color:var(--gold2);}
+.cc-ico{
+  width:42px;height:42px;border-radius:11px;flex-shrink:0;
+  background:rgba(255,255,255,0.07);
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;color:var(--gold2);
+  border:1px solid rgba(196,154,46,0.2);
+}
+
+.form-card{
+  background:rgba(255,255,255,0.05);
+  border-radius:20px;padding:36px;
+  border:1px solid rgba(196,154,46,0.2);
+  backdrop-filter:blur(10px);
+}
+.form-h{font-family:'Frank Ruhl Libre',serif;font-size:22px;font-weight:900;color:var(--cream);margin-bottom:6px;}
+.form-sub{font-size:13.5px;color:rgba(240,233,214,0.6);font-family:'Heebo',sans-serif;margin-bottom:24px;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.fg{display:flex;flex-direction:column;gap:7px;margin-bottom:14px;}
+.fg label{font-size:12.5px;font-weight:700;color:rgba(240,233,214,0.7);text-transform:uppercase;letter-spacing:.6px;font-family:'Heebo',sans-serif;}
+.fg input,.fg select,.fg textarea{
+  padding:12px 14px;border-radius:10px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(196,154,46,0.2);
+  color:var(--cream);font-size:14px;font-family:'Heebo',sans-serif;
+  outline:none;transition:border-color .2s;
+  -webkit-appearance:none;
+}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(240,233,214,0.35);}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(196,154,46,0.5);}
+.fg select option{background:var(--teal-deep);color:var(--cream);}
+.fg textarea{resize:vertical;min-height:90px;}
+.form-btn{
+  width:100%;padding:15px;border-radius:12px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  color:var(--teal-deep);font-size:16px;font-weight:900;
+  font-family:'Frank Ruhl Libre',serif;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  box-shadow:0 8px 28px rgba(196,154,46,0.4);
+  transition:transform .2s,box-shadow .2s;
+  margin-top:6px;
+}
+.form-btn:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(196,154,46,0.55);}
+.form-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+.privacy-note{text-align:center;font-size:12px;color:rgba(240,233,214,0.45);margin-top:14px;font-family:'Heebo',sans-serif;}
+.privacy-note i{margin-left:5px;}
+
+/* ===================== FOOTER ===================== */
+footer{
+  background:rgba(0,0,0,0.3);
+  border-top:1px solid rgba(196,154,46,0.15);
+  padding:28px 5%;text-align:center;
+}
+footer p{font-size:13px;color:rgba(240,233,214,0.5);font-family:'Heebo',sans-serif;}
+footer strong{color:var(--gold2);}
+footer a{color:rgba(196,154,46,0.7);text-decoration:none;}
+
+/* WhatsApp */
+.wa{
+  position:fixed;bottom:28px;left:28px;z-index:999;
+  width:58px;height:58px;border-radius:50%;
+  background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:26px;text-decoration:none;
+  box-shadow:0 6px 24px rgba(37,211,102,0.45);
+  animation:pulse 2.5s ease infinite;
+}
+
+/* ===================== ANIMATIONS ===================== */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
+@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+@keyframes pulse{0%,100%{box-shadow:0 6px 24px rgba(37,211,102,0.45);}50%{box-shadow:0 6px 38px rgba(37,211,102,0.7);}}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.in{opacity:1;transform:none;}
+.reveal-d1{transition-delay:.08s;}
+.reveal-d2{transition-delay:.16s;}
+.reveal-d3{transition-delay:.24s;}
+.reveal-d4{transition-delay:.32s;}
+
+/* ===================== SUCCESS/ERROR ===================== */
+.form-msg{
+  text-align:center;padding:16px;border-radius:12px;
+  font-family:'Heebo',sans-serif;font-size:14px;font-weight:600;
+  margin-top:14px;display:none;
+}
+.form-msg.success{background:rgba(37,211,102,0.15);border:1px solid rgba(37,211,102,0.3);color:#25D366;}
+.form-msg.error{background:rgba(220,60,60,0.15);border:1px solid rgba(220,60,60,0.3);color:#ff6b6b;}
+
+/* ===================== RESPONSIVE ===================== */
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero-inner{flex-direction:column;padding:40px 5% 60px;text-align:center;}
+  .hero-photo{flex:none;display:flex;justify-content:center;}
+  .photo-frame{width:280px;height:350px;}
+  .fb1,.fb2{display:none;}
+  .hero-btns{justify-content:center;}
+  .hero-stats{justify-content:center;}
+  .about-grid{grid-template-columns:1fr;}
+  .about-visual{display:none;}
+  .srv-grid{grid-template-columns:1fr 1fr;}
+  .guides-grid{grid-template-columns:1fr;}
+  .adv-grid{grid-template-columns:1fr;}
+  .test-grid{grid-template-columns:1fr;}
+  .contact-wrap{grid-template-columns:1fr;gap:40px;}
+  .frow{grid-template-columns:1fr;}
+  .section-tabs{justify-content:flex-start;}
+}
+@media(max-width:600px){
+  .srv-grid{grid-template-columns:1fr;}
+  .hero-name{font-size:clamp(44px,11vw,58px);}
+  .trust-band{gap:20px;padding:18px 4%;}
+  .t-sep{display:none;}
+  .sec{padding:60px 5%;}
+  .contact-wrap{padding:60px 5%;}
+  .form-card{padding:24px;}
+  .tab-btn{font-size:11.5px;padding:12px 13px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="logo">
+    <div class="logo-bird"><i class="fa-solid fa-dove"></i></div>
+    <div>
+      <div class="logo-name">אילן פרץ</div>
+      <div class="logo-role">קבוצת המשכן</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">אודות</a></li>
+    <li><a href="#services">שירותים</a></li>
+    <li><a href="#guides">מדריכים</a></li>
+    <li><a href="#process">תהליך</a></li>
+    <li><a href="#advantages">יתרונות</a></li>
+    <li><a href="#testimonials">המלצות</a></li>
+    <li><a href="#contact" class="nav-cta-btn">קביעת פגישה</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()" id="hamburgerBtn">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" onclick="closeMenu()">אודות</a>
+  <a href="#services" onclick="closeMenu()">שירותים</a>
+  <a href="#guides" onclick="closeMenu()">מדריכים</a>
+  <a href="#process" onclick="closeMenu()">תהליך</a>
+  <a href="#advantages" onclick="closeMenu()">יתרונות</a>
+  <a href="#testimonials" onclick="closeMenu()">המלצות</a>
+  <a href="#contact" onclick="closeMenu()">קביעת פגישה ➔</a>
+</div>
+
+<!-- SECTION TABS -->
+<div class="section-tabs">
+  <a href="#about" class="tab-btn" data-section="about"><i class="fa-solid fa-user"></i> אודות</a>
+  <a href="#services" class="tab-btn" data-section="services"><i class="fa-solid fa-briefcase"></i> שירותים</a>
+  <a href="#guides" class="tab-btn" data-section="guides"><i class="fa-solid fa-book-open"></i> מדריכים</a>
+  <a href="#process" class="tab-btn" data-section="process"><i class="fa-solid fa-list-check"></i> תהליך</a>
+  <a href="#advantages" class="tab-btn" data-section="advantages"><i class="fa-solid fa-star"></i> יתרונות</a>
+  <a href="#testimonials" class="tab-btn" data-section="testimonials"><i class="fa-solid fa-comments"></i> המלצות</a>
+  <a href="#contact" class="tab-btn" data-section="contact"><i class="fa-solid fa-envelope"></i> צור קשר</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-texture"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fa-solid fa-award"></i> יועץ משכנתאות מוסמך ומאושר</div>
+      <div class="hero-name">אילן פרץ</div>
+      <div class="hero-name-under"></div>
+      <div class="hero-profession">ייעוץ ותכנון משכנתאות | קבוצת המשכן</div>
+      <p class="hero-tagline">
+        <strong>ניהול מקיף ומלא של תהליך רכישת נכס</strong> — מהפגישה הראשונה ועד קבלת המפתח.<br>
+        עם ניסיון מוכח, ידע מקצועי עמוק וקשרים עם כלל הבנקים בישראל.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-gold"><i class="fa-solid fa-calendar-check"></i> קביעת פגישת ייעוץ</a>
+        <a href="https://wa.me/972536633848" class="btn-outline-white" target="_blank"><i class="fa-brands fa-whatsapp"></i> וואטסאפ</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="s-num">5<span style="color:var(--cream);font-size:22px;">+</span></div>
+          <div class="s-label">שנות ניסיון</div>
+        </div>
+        <div class="stat">
+          <div class="s-num">כל<span style="color:var(--cream);font-size:16px;"> </span></div>
+          <div class="s-label">הבנקים בישראל</div>
+        </div>
+        <div class="stat">
+          <div class="s-num">100%</div>
+          <div class="s-label">מסירות ללקוח</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <img src="https://placehold.co/350x440/0d4a50/f0e9d6?text=אילן+פרץ" alt="אילן פרץ">
+      </div>
+      <div class="float-badge fb1">
+        <div class="fb-inner">
+          <div class="fb-icon g"><i class="fa-solid fa-shield-check"></i></div>
+          <div>
+            <div class="fb-lbl">מורשה מטעם</div>
+            <div class="fb-val">בנק ישראל</div>
+          </div>
+        </div>
+      </div>
+      <div class="float-badge fb2">
+        <div class="fb-inner">
+          <div class="fb-icon t"><i class="fa-solid fa-building-columns"></i></div>
+          <div>
+            <div class="fb-lbl">גישה ל</div>
+            <div class="fb-val">כל הבנקים</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAND -->
+<div class="trust-band">
+  <div class="t-item"><i class="fa-solid fa-shield-check"></i> מורשה מטעם בנק ישראל</div>
+  <div class="t-sep"></div>
+  <div class="t-item"><i class="fa-solid fa-building-columns"></i> גישה לכל הבנקים</div>
+  <div class="t-sep"></div>
+  <div class="t-item"><i class="fa-solid fa-hard-hat"></i> תעודה בהנדסת בניין</div>
+  <div class="t-sep"></div>
+  <div class="t-item"><i class="fa-solid fa-handshake"></i> פגישת ייעוץ ראשונה ללא עלות</div>
+  <div class="t-sep"></div>
+  <div class="t-item"><i class="fa-solid fa-phone"></i> 053-6633848</div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-img-wrap">
+          <img src="https://placehold.co/460x480/0d4a50/f0e9d6?text=אילן+פרץ" alt="אילן פרץ">
+          <div class="about-name-card">
+            <div class="about-avatar">אפ</div>
+            <div>
+              <div class="about-card-name">אילן פרץ</div>
+              <div class="about-card-role">יועץ משכנתאות | מהנדס בניין | קבוצת המשכן</div>
+            </div>
+          </div>
+        </div>
+        <div class="exp-chips">
+          <div class="exp-chip"><div class="exp-n">5+</div><div class="exp-t">שנות ניסיון</div></div>
+          <div class="exp-chip"><div class="exp-n">כל</div><div class="exp-t">הבנקים</div></div>
+          <div class="exp-chip"><div class="exp-n">100%</div><div class="exp-t">מסירות</div></div>
+        </div>
+      </div>
+      <div class="about-body reveal reveal-d1">
+        <div class="sec-label">אודותי</div>
+        <h2 class="sec-h">אילן פרץ —<br>יועץ המשכנתאות שלכם</h2>
+        <p class="sec-p">בן 30, נשוי ואב לשניים, אני יודע מקרוב מה פירושו לעמוד בפני החלטה הכלכלית הגדולה בחיים. הדרך שעברתי בעצמי היא שהעניקה לי את האחריות המקצועית והאישית לסייע לכם.</p>
+        <p class="sec-p" style="margin-top:14px;">המשימה שלי היא לעזור לצעירים, לזוגות, ליחידים ולרוכשי דירות לעבור את כל תהליך המשכנתא בביטחון מלא, בידע עמוק ובשקיפות מוחלטת. לא עוד ריצה בין בנקים, לא עוד אי-הבנה — רק תהליך מנוהל, מדויק ומשתלם.</p>
+        <p class="sec-p" style="margin-top:14px;">כמהנדס בניין בהכשרתי, אני מכיר לעומק את שוק הנדל"ן, את הקבלנים ואת הפרויקטים ברחבי הארץ — ידע שמאפשר לי לספק ייעוץ הוליסטי שמתחיל הרבה לפני שנכנסים לבנק.</p>
+        <div class="about-list">
+          <div class="a-item">
+            <div class="a-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+            <div>
+              <div class="a-h4">ניתוח פיננסי מעמיק ומותאם אישית</div>
+              <p class="a-p">בוחן את המצב הפיננסי שלכם לעומק ובונה תמהיל משכנתא שמתאים בדיוק לצרכים, ליכולות ולמטרות שלכם.</p>
+            </div>
+          </div>
+          <div class="a-item">
+            <div class="a-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+            <div>
+              <div class="a-h4">מכרז ריביות מול כל הבנקים</div>
+              <p class="a-p">מנהל עבורכם מכרז ריביות מקצועי מול כלל הבנקים הגדולים — ומביא לכם את ההצעה הטובה ביותר בשוק.</p>
+            </div>
+          </div>
+          <div class="a-item">
+            <div class="a-icon"><i class="fa-solid fa-person-chalkboard"></i></div>
+            <div>
+              <div class="a-h4">ליווי מלא מהחיפוש ועד המפתחות</div>
+              <p class="a-p">מלווה אתכם בכל שלב — מחיפוש הנכס, דרך הבנקים, ועד לחתימה הסופית וקבלת המפתח.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--bg)">
+  <div class="sec">
+    <div class="reveal" style="text-align:center">
+      <div class="sec-label" style="justify-content:center">השירותים שלי</div>
+      <h2 class="sec-h" style="text-align:center">פתרונות מקצועיים<br>לכל שלב בדרך לנכס</h2>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card reveal reveal-d1">
+        <div class="srv-ico"><i class="fa-solid fa-house-user"></i></div>
+        <div class="srv-h">רכישה מקבלן</div>
+        <p class="srv-p">ייעוץ מקיף לרכישת דירה מקבלן — בניית מסלול מימון מותאם אישית, מו"מ מול הבנקים, ניהול כלל ההליך עד לחתימה.</p>
+      </div>
+      <div class="srv-card dark reveal reveal-d2">
+        <div class="srv-ico"><i class="fa-solid fa-handshake"></i></div>
+        <div class="srv-h">יד שנייה</div>
+        <p class="srv-p">ליווי מקצועי לרכישת דירה מיד שנייה — בדיקות מוקדמות, אפיון מימון ותנאי חתימה אופטימליים.</p>
+      </div>
+      <div class="srv-card reveal reveal-d3">
+        <div class="srv-ico"><i class="fa-solid fa-rotate"></i></div>
+        <div class="srv-h">מחזור משכנתא</div>
+        <p class="srv-p">בעלי משכנתא קיימת? אבחן אם ניתן לחסוך עשרות אלפי שקלים על ידי מחזור חכם ומותאם לתנאי השוק הנוכחי.</p>
+      </div>
+      <div class="srv-card reveal reveal-d1">
+        <div class="srv-ico"><i class="fa-solid fa-building"></i></div>
+        <div class="srv-h">משכנתא להשקעה</div>
+        <p class="srv-p">רוכשים נדל"ן להשקעה? אבנה עבורכם מסלול מימון אופטימלי עם מינוף מקסימלי ועלויות מינימליות.</p>
+      </div>
+      <div class="srv-card reveal reveal-d2">
+        <div class="srv-ico"><i class="fa-solid fa-file-contract"></i></div>
+        <div class="srv-h">ייעוץ פיננסי לפני רכישה</div>
+        <p class="srv-p">עוד בטרם בחרתם נכס — אבחן את כושר ההחזר שלכם, אגדיר את הטווח המתאים ואמנע טעויות יקרות.</p>
+      </div>
+      <div class="srv-card reveal reveal-d3">
+        <div class="srv-ico"><i class="fa-solid fa-landmark"></i></div>
+        <div class="srv-h">מסורבי בנקים</div>
+        <p class="srv-p">קיבלתם סירוב מהבנק? אני מתמחה במציאת פתרונות מימון חלופיים ומוביל להצלחה גם במקרים מורכבים.</p>
+      </div>
+      <div class="srv-card reveal reveal-d1">
+        <div class="srv-ico"><i class="fa-solid fa-rotate-left"></i></div>
+        <div class="srv-h">איחוד הלוואות</div>
+        <p class="srv-p">ריכוז כלל ההלוואות והמשכנתאות למסלול אחד מנוהל — להפחתת ההחזר החודשי ולשיפור תזרים המזומנים.</p>
+      </div>
+      <div class="srv-card reveal reveal-d2">
+        <div class="srv-ico"><i class="fa-solid fa-headset"></i></div>
+        <div class="srv-h">ליווי אישי עד לסגירה</div>
+        <p class="srv-p">טיפול מלא בכל הבירוקרטיה, הבנקים ועורכי הדין — כך שתתמקדו בשמחת הרכישה בלבד.</p>
+      </div>
+      <div class="srv-card premium reveal reveal-d3">
+        <div class="srv-badge">⭐ מסלול פרימיום</div>
+        <div class="srv-ico"><i class="fa-solid fa-gem"></i></div>
+        <div class="srv-h">ליווי אישי לרוכשי דירות — פרימיום</div>
+        <p class="srv-p">חבילת הליווי המלאה והיוקרתית ביותר: משלב חיפוש הנכס, דרך ניהול המו"מ מול הקבלן, ועד קבלת המפתח — הכל תחת ניהול אחד, מקצועי ומסור.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUIDES -->
+<section id="guides" class="dark-section">
+  <div class="sec">
+    <div class="reveal" style="text-align:center">
+      <div class="sec-label" style="justify-content:center">מדריכים מקצועיים</div>
+      <h2 class="sec-h" style="text-align:center">הידע שיחסוך לכם<br>כסף רב</h2>
+      <p class="sec-p" style="text-align:center;max-width:520px;margin:0 auto 10px;">מדריכים מפורטים שבניתי במיוחד עבורכם — כדי שתבינו לעומק כל שלב בתהליך.</p>
+    </div>
+    <div class="guides-grid" style="margin-top:44px;">
+      <a href="#contact" class="guide-card reveal reveal-d1">
+        <div class="guide-ico"><i class="fa-solid fa-tag"></i></div>
+        <div>
+          <div class="guide-title">מדריך מחיר למשתכן</div>
+          <div class="guide-desc">כל מה שצריך לדעת על תוכנית מחיר למשתכן — זכאות, הגרלות ואיך למקסם את הסיכוי לזכות.</div>
+        </div>
+        <div class="guide-arrow"><i class="fa-solid fa-arrow-left"></i></div>
+      </a>
+      <a href="#contact" class="guide-card reveal reveal-d2">
+        <div class="guide-ico"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div>
+          <div class="guide-title">קורס משכנתאות מלא</div>
+          <div class="guide-desc">מדריך מקיף מ-א ועד ת — תמהילים, ריביות, שלבי האישור ואיך מנהלים מו"מ מול הבנק.</div>
+        </div>
+        <div class="guide-arrow"><i class="fa-solid fa-arrow-left"></i></div>
+      </a>
+      <a href="#contact" class="guide-card reveal reveal-d3">
+        <div class="guide-ico"><i class="fa-solid fa-chart-line"></i></div>
+        <div>
+          <div class="guide-title">מדריך מחזור משכנתא</div>
+          <div class="guide-desc">מתי כדאי למחזר? איך מחשבים חיסכון? כל הכלים לקבל החלטה מושכלת.</div>
+        </div>
+        <div class="guide-arrow"><i class="fa-solid fa-arrow-left"></i></div>
+      </a>
+      <a href="#contact" class="guide-card reveal reveal-d4">
+        <div class="guide-ico"><i class="fa-solid fa-home"></i></div>
+        <div>
+          <div class="guide-title">מדריך רוכש דירה ראשונה</div>
+          <div class="guide-desc">המדריך המלא לרוכשי דירה ראשונה — מה לבדוק, מה לשאול ואיך לא ליפול בפחים.</div>
+        </div>
+        <div class="guide-arrow"><i class="fa-solid fa-arrow-left"></i></div>
+      </a>
+    </div>
+    <p style="text-align:center;margin-top:32px;color:rgba(240,233,214,0.5);font-size:13px;font-family:'Heebo',sans-serif;">
+      <i class="fa-solid fa-info-circle"></i> לגישה למדריכים המלאים — צרו קשר ואשלח לכם ישירות
+    </p>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" style="background:var(--white)">
+  <div class="sec">
+    <div class="reveal" style="text-align:center">
+      <div class="sec-label" style="justify-content:center">התהליך שלנו</div>
+      <h2 class="sec-h" style="text-align:center">7 שלבים מובנים<br>לקבלת משכנתא אופטימלית</h2>
+      <p class="sec-p" style="text-align:center;max-width:560px;margin:0 auto;">תהליך מנוהל, שקוף ומקצועי — שמוביל אתכם מהרגע הראשון ועד לחתימה הסופית.</p>
+    </div>
+    <div class="proc-timeline" style="margin-top:54px;max-width:780px;">
+      <div class="proc-step reveal reveal-d1">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-h">פגישה ראשונה ללא התחייבות</div>
+          <p class="step-p">פגישת היכרות מעמיקה שבה נסקור יחד את האפשרויות העומדות בפניכם, נסביר על תהליך המשכנתא מקצה לקצה ונבחן את ההיתכנות הפיננסית — ללא עלות וללא כל התחייבות.</p>
+        </div>
+      </div>
+      <div class="proc-step reveal reveal-d2">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-h">מיפוי פיננסי מלא</div>
+          <p class="step-p">באמצעות שאלון מפורט ושיחה מעמיקה, נמפה את המבנה הפיננסי שלכם במדויק — הכנסות, הוצאות, התחייבויות, אילוצים, צרכים ורצונות — כדי לבנות פתרון שמתאים בדיוק למציאות שלכם.</p>
+        </div>
+      </div>
+      <div class="proc-step reveal reveal-d3">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-h">הסבר מפורט על שלבי התהליך</div>
+          <p class="step-p">בפגישה מובנית נסקור את כל שלבי התהליך בפירוט — מה נדרש לעבור, אילו מסמכים לאסוף, מה ציר הזמן הצפוי ומה תפקיד כל גורם בתהליך. שקיפות מלאה מהרגע הראשון.</p>
+        </div>
+      </div>
+      <div class="proc-step reveal reveal-d1">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-h">בניית תמהיל מותאם אישית</div>
+          <p class="step-p">בניית תמהיל משכנתא חכם ומבוסס אסטרטגיה פיננסית — שמגדר סיכונים, מאזן בין מסלולים ומותאם לאורח החיים שלכם. לא תמהיל גנרי — תמהיל שנבנה רק עבורכם.</p>
+        </div>
+      </div>
+      <div class="proc-step reveal reveal-d2">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <div class="step-h">מכרז ריביות מול הבנקים</div>
+          <p class="step-p">מנהל עבורכם מכרז ריביות מקצועי מול כלל הבנקים הגדולים בישראל — מנצל את הקשרים, את הניסיון ואת הידע כדי להוציא עבורכם את ההצעה הטובה, המשתלמת והמאוזנת ביותר.</p>
+        </div>
+      </div>
+      <div class="proc-step reveal reveal-d3">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <div class="step-h">פגישת הכנה לפני חתימה</div>
+          <p class="step-p">לפני הרגע הגדול — פגישת הנחיה מפורטת שבה נסקור את כל הסעיפים, נסביר כל סעיף בשפה פשוטה וברורה ונוודא שאתם נכנסים לחתימה עם ביטחון מלא והבנה מוחלטת.</p>
+        </div>
+      </div>
+      <div class="proc-step reveal reveal-d1">
+        <div class="step-num">7</div>
+        <div class="step-body">
+          <div class="step-h">חתימה בבנק וקבלת המשכנתא</div>
+          <p class="step-p">מלווה אתכם פיזית לחתימות בבנק, מנהל את כל התיאום מול הנוטריון, עורך הדין והגורמים הרלוונטיים — עד לקבלת אישור המשכנתא הסופי. אתם מקבלים את המפתח, אנחנו דואגים לשאר.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVANTAGES -->
+<section id="advantages" style="background:var(--bg)">
+  <div class="sec">
+    <div class="reveal" style="text-align:center">
+      <div class="sec-label" style="justify-content:center">למה לבחור בנו</div>
+      <h2 class="sec-h" style="text-align:center">היתרונות שלנו</h2>
+    </div>
+    <div class="adv-grid" style="margin-top:44px;">
+      <div class="adv-card reveal reveal-d1">
+        <div class="adv-ico"><i class="fa-solid fa-certificate"></i></div>
+        <div>
+          <div class="adv-h">יועץ מוסמך ומאושר בכלל הבנקים</div>
+          <p class="adv-p">מורשה מטעם בנק ישראל לייעוץ משכנתאות, עם גישה מלאה לכל הבנקים המסחריים בישראל — מה שמאפשר השוואה אמיתית ומשא ומתן אפקטיבי.</p>
+        </div>
+      </div>
+      <div class="adv-card reveal reveal-d2">
+        <div class="adv-ico"><i class="fa-solid fa-hard-hat"></i></div>
+        <div>
+          <div class="adv-h">תעודה בהנדסת בניין</div>
+          <p class="adv-p">הרקע ההנדסי מאפשר הבנה מעמיקה של פרויקטים, שלבי בנייה ואיכות ביצוע — ידע ייחודי שמשפיע ישירות על איכות הייעוץ שתקבלו.</p>
+        </div>
+      </div>
+      <div class="adv-card reveal reveal-d3">
+        <div class="adv-ico"><i class="fa-solid fa-briefcase"></i></div>
+        <div>
+          <div class="adv-h">מעל 5 שנות ניסיון בניהול פרויקטים מורכבים</div>
+          <p class="adv-p">ניסיון עשיר בניהול עסקאות נדל"ן מורכבות, לצד היכרות אישית ומעמיקה עם כלל הקבלנים הגדולים בישראל — יתרון שאי-אפשר לרכוש בשום ספר לימוד.</p>
+        </div>
+      </div>
+      <div class="adv-card reveal reveal-d4">
+        <div class="adv-ico"><i class="fa-solid fa-user-tie"></i></div>
+        <div>
+          <div class="adv-h">ייעוץ אובייקטיבי וניטרלי</div>
+          <p class="adv-p">בניגוד לפקידי הבנק, אין לי עניין מוסדי בבנק כלשהו. המחויבות שלי היחידה היא להשיג עבורכם את התנאים הטובים ביותר.</p>
+        </div>
+      </div>
+      <div class="adv-card reveal reveal-d1">
+        <div class="adv-ico"><i class="fa-solid fa-clock"></i></div>
+        <div>
+          <div class="adv-h">זמינות ושירות אישי</div>
+          <p class="adv-p">לא תועברו בין נציגים ולא תחכו בתור. זמין לכם לאורך כל התהליך — בהודעה, בשיחה, בפגישה. כי כשמדובר בהחלטה הגדולה בחייכם, מגיע לכם יותר.</p>
+        </div>
+      </div>
+      <div class="adv-card reveal reveal-d2">
+        <div class="adv-ico"><i class="fa-solid fa-shield-halved"></i></div>
+        <div>
+          <div class="adv-h">ניהול סיכונים פיננסי חכם</div>
+          <p class="adv-p">כל תמהיל שאני בונה מתבסס על ניתוח סיכונים מעמיק — כדי שתהיו מוגנים גם אם הריבית עולה, גם אם ההכנסה משתנה וגם בסיטואציות בלתי צפויות.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background:var(--white)">
+  <div class="sec">
+    <div class="reveal" style="text-align:center">
+      <div class="sec-label" style="justify-content:center">המלצות לקוחות</div>
+      <h2 class="sec-h" style="text-align:center">מה הלקוחות שלנו אומרים</h2>
+      <p class="sec-p" style="text-align:center;max-width:480px;margin:0 auto;">לקוחות מרוצים שעברו את התהליך איתנו — ומספרים בשמם</p>
+    </div>
+    <div class="test-grid" style="margin-top:44px;">
+      <div class="test-card reveal reveal-d1">
+        <div class="test-quote">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="t-text">אילן עזר לנו לחסוך עשרות אלפי שקלים על המשכנתא. הסביר הכל בצורה ברורה, היה זמין בכל שאלה, וניהל מולנו מסלול מקצועי לחלוטין. ממליץ בחום לכל מי שרוצה לעשות את זה נכון.</p>
+        <div class="t-person">
+          <div class="t-av">אר</div>
+          <div><div class="t-nm">ארי כהן</div><div class="t-ct">תל אביב</div></div>
+        </div>
+      </div>
+      <div class="test-card reveal reveal-d2">
+        <div class="test-quote">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="t-text">רכשנו דירה ראשונה ולא ידענו מאיפה להתחיל. אילן ליווה אותנו צעד אחר צעד, הסביר את כל האפשרויות ודאג שנקבל את ההצעה הטובה ביותר. חוויה מקצועית ומרגיעה לאורך כל הדרך.</p>
+        <div class="t-person">
+          <div class="t-av">יא</div>
+          <div><div class="t-nm">יואל אברהם</div><div class="t-ct">ראשון לציון</div></div>
+        </div>
+      </div>
+      <div class="test-card reveal reveal-d3">
+        <div class="test-quote">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="t-text">מחזרנו משכנתא ישנה וחסכנו מאות שקלים בחודש! אילן עשה הכל בצורה חלקה ומהירה. שירות ברמה אחרת — מקצועיות, אמינות ויחס אישי חם לאורך כל התהליך.</p>
+        <div class="t-person">
+          <div class="t-av">רצ</div>
+          <div><div class="t-nm">רפאל צור</div><div class="t-ct">פתח תקווה</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--teal-deep);">
+  <div class="contact-wrap">
+    <div class="ci reveal">
+      <div class="sec-label">צור קשר</div>
+      <h2 class="sec-h">מוכנים לקחת<br>את הצעד הראשון?</h2>
+      <p class="sec-p">השאירו פרטים ואחזור אליכם תוך שעה לשיחת ייעוץ ראשונה — ללא עלות וללא כל התחייבות.</p>
+      <div class="contact-channels">
+        <a href="tel:0536633848" class="cc-link">
+          <div class="cc-ico"><i class="fa-solid fa-phone"></i></div>
+          053-6633848
+        </a>
+        <a href="mailto:perezilangroup@gmail.com" class="cc-link">
+          <div class="cc-ico"><i class="fa-solid fa-envelope"></i></div>
+          perezilangroup@gmail.com
+        </a>
+        <a href="https://wa.me/972536633848" class="cc-link" target="_blank">
+          <div class="cc-ico"><i class="fa-brands fa-whatsapp"></i></div>
+          שלח הודעה בוואטסאפ
+        </a>
+      </div>
+    </div>
+
+    <div class="form-card reveal reveal-d1">
+      <div class="form-h">קביעת שיחת ייעוץ</div>
+      <p class="form-sub">מלאו את הפרטים ואחזור אליכם בהקדם האפשרי</p>
+      <div class="frow">
+        <div class="fg"><label>שם פרטי</label><input id="f_first" type="text" placeholder="ישראל"></div>
+        <div class="fg"><label>שם משפחה</label><input id="f_last" type="text" placeholder="ישראלי"></div>
+      </div>
+      <div class="frow">
+        <div class="fg"><label>טלפון</label><input id="f_phone" type="tel" placeholder="050-0000000"></div>
+        <div class="fg"><label>אימייל</label><input id="f_email" type="email" placeholder="you@email.com"></div>
+      </div>
+      <div class="fg">
+        <label>סוג הפנייה</label>
+        <select id="f_type">
+          <option>רכישת דירה ראשונה</option>
+          <option>מחזור משכנתא</option>
+          <option>דירה להשקעה</option>
+          <option>ליווי פרימיום</option>
+          <option>יד שנייה</option>
+          <option>ייעוץ כללי</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>הודעה (אופציונלי)</label>
+        <textarea id="f_msg" placeholder="ספרו לי בקצרה על המצב שלכם..."></textarea>
+      </div>
+      <button class="form-btn" id="submitBtn" onclick="sendForm()">
+        <i class="fa-solid fa-paper-plane"></i> שלח פנייה
+      </button>
+      <div class="form-msg" id="formMsg"></div>
+      <p class="privacy-note"><i class="fa-solid fa-lock"></i> הפרטים שלכם שמורים ומוגנים בפרטיות מלאה</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:var(--teal-deep);">
+  <p>© 2025 <strong>אילן פרץ</strong> | קבוצת המשכן — ייעוץ ותכנון משכנתאות | כל הזכויות שמורות</p>
+  <p style="margin-top:8px;font-size:11.5px;opacity:.6">מורשה מטעם בנק ישראל · ייעוץ אובייקטיבי וניטרלי · <a href="mailto:perezilangroup@gmail.com">perezilangroup@gmail.com</a></p>
+</footer>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/972536633848" class="wa" target="_blank" title="צור קשר בוואטסאפ">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script>
+// ---- Nav scroll ----
+const navEl = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  navEl.classList.toggle('scrolled', window.scrollY > 20);
+  updateActiveTabs();
+});
+
+// ---- Mobile nav ----
+function toggleMenu(){
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobileNav').classList.remove('open');
+}
+
+// ---- Reveal on scroll ----
+const reveals = document.querySelectorAll('.reveal');
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('in'), 0);
+      ro.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(el => ro.observe(el));
+
+// ---- Active tabs ----
+function updateActiveTabs(){
+  const sections = ['about','services','guides','process','advantages','testimonials','contact'];
+  const tabs = document.querySelectorAll('.tab-btn');
+  let current = '';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if(el && window.scrollY >= el.offsetTop - 160) current = id;
+  });
+  tabs.forEach(t => {
+    t.classList.toggle('active', t.dataset.section === current);
+  });
+}
+
+// ---- Form — sends via EmailJS / fetch approach ----
+// Since pure client-side can't send email silently, we use a free FormSubmit relay
+async function sendForm() {
+  const first = document.getElementById('f_first').value.trim();
+  const last  = document.getElementById('f_last').value.trim();
+  const phone = document.getElementById('f_phone').value.trim();
+  const email = document.getElementById('f_email').value.trim();
+  const type  = document.getElementById('f_type').value;
+  const msg   = document.getElementById('f_msg').value.trim();
+  const btn   = document.getElementById('submitBtn');
+  const msgEl = document.getElementById('formMsg');
+
+  if (!first || !phone) {
+    showMsg('אנא מלאו לפחות שם פרטי ומספר טלפון.', 'error');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> שולח...';
+
+  try {
+    const formData = new FormData();
+    formData.append('_subject', 'פנייה חדשה מהאתר — ' + first + ' ' + last);
+    formData.append('שם מלא', first + ' ' + last);
+    formData.append('טלפון', phone);
+    formData.append('אימייל', email || 'לא הוזן');
+    formData.append('סוג פנייה', type);
+    formData.append('הודעה', msg || '—');
+    formData.append('_replyto', email || 'perezilangroup@gmail.com');
+    formData.append('_template', 'table');
+
+    const res = await fetch('https://formsubmit.co/perezilangroup@gmail.com', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      showMsg('✓ הפנייה נשלחה בהצלחה! אחזור אליכם בהקדם.', 'success');
+      document.getElementById('f_first').value = '';
+      document.getElementById('f_last').value = '';
+      document.getElementById('f_phone').value = '';
+      document.getElementById('f_email').value = '';
+      document.getElementById('f_msg').value = '';
+    } else {
+      throw new Error('שגיאה');
+    }
+  } catch(e) {
+    showMsg('אירעה שגיאה בשליחה. אנא צרו קשר ישירות בטלפון 053-6633848.', 'error');
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> שלח פנייה';
+}
+
+function showMsg(text, type){
+  const el = document.getElementById('formMsg');
+  el.textContent = text;
+  el.className = 'form-msg ' + type;
+  el.style.display = 'block';
+  setTimeout(() => { el.style.display = 'none'; }, 7000);
+}
+</script>
+</body>
+</html>
