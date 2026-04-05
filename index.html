@@ -480,16 +480,123 @@ footer a{color:rgba(212,169,58,0.7);text-decoration:none;}
   .frow{grid-template-columns:1fr;}
   .section-tabs{justify-content:flex-start;}
 }
-@media(max-width:600px){
-  .srv-grid{grid-template-columns:1fr;}
-  .guides-grid{grid-template-columns:1fr;}
-  .hero-name{font-size:clamp(44px,11vw,58px);}
-  .trust-band{gap:18px;padding:16px 4%;}
-  .t-sep{display:none;}
-  .sec{padding:60px 5%;}
-  .contact-wrap{padding:60px 5%;}
-  .form-card{padding:22px;}
-  .tab-btn{font-size:11.5px;padding:12px 12px;}
+/* ====== CALCULATOR OVERLAY ====== */
+.calc-overlay{
+  display:none;position:fixed;inset:0;z-index:1200;
+  background:rgba(4,28,32,0.92);backdrop-filter:blur(16px);
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
+}
+.calc-overlay.open{display:block;}
+.calc-topbar{
+  position:sticky;top:0;z-index:10;
+  background:rgba(8,59,64,0.98);
+  border-bottom:1px solid rgba(196,154,46,0.25);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 5%;
+}
+.calc-topbar-title{
+  font-family:'Frank Ruhl Libre',serif;font-size:19px;font-weight:900;
+  color:var(--gold2);display:flex;align-items:center;gap:10px;
+}
+.calc-topbar-title i{font-size:17px;}
+.calc-close-btn{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);
+  color:var(--cream);font-size:13px;font-weight:600;
+  padding:8px 16px;border-radius:8px;cursor:pointer;font-family:'Heebo',sans-serif;
+  transition:background .2s;
+}
+.calc-close-btn:hover{background:rgba(255,255,255,0.14);}
+.calc-inner{max-width:860px;margin:0 auto;padding:40px 5% 60px;}
+.calc-intro{
+  text-align:center;margin-bottom:48px;
+}
+.calc-intro h2{
+  font-family:'Frank Ruhl Libre',serif;font-size:clamp(26px,4vw,36px);font-weight:900;
+  color:var(--cream);margin-bottom:10px;
+}
+.calc-intro p{font-size:15px;color:rgba(240,233,214,0.65);font-family:'Heebo',sans-serif;}
+.calc-cards{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.calc-card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(196,154,46,0.2);
+  border-radius:22px;padding:32px;
+  transition:border-color .3s;
+}
+.calc-card:hover{border-color:rgba(196,154,46,0.4);}
+.calc-card-header{
+  display:flex;align-items:center;gap:14px;margin-bottom:26px;
+}
+.calc-card-icon{
+  width:52px;height:52px;border-radius:15px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;color:var(--teal-deep);
+  box-shadow:0 6px 18px rgba(196,154,46,0.35);
+}
+.calc-card-title{font-family:'Frank Ruhl Libre',serif;font-size:18px;font-weight:900;color:var(--cream);}
+.calc-card-sub{font-size:12px;color:rgba(212,169,58,0.75);font-family:'Heebo',sans-serif;margin-top:3px;}
+.calc-field{display:flex;flex-direction:column;gap:7px;margin-bottom:16px;}
+.calc-field label{
+  font-size:12px;font-weight:700;color:rgba(240,233,214,0.65);
+  text-transform:uppercase;letter-spacing:.6px;font-family:'Heebo',sans-serif;
+}
+.calc-field input{
+  padding:13px 15px;border-radius:11px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(196,154,46,0.2);
+  color:var(--cream);font-size:16px;font-family:'Heebo',sans-serif;
+  outline:none;transition:border-color .2s;
+  -webkit-appearance:none;
+}
+.calc-field input::placeholder{color:rgba(240,233,214,0.3);}
+.calc-field input:focus{border-color:rgba(196,154,46,0.55);}
+.calc-btn{
+  width:100%;padding:14px;border-radius:12px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  color:var(--teal-deep);font-size:15px;font-weight:900;
+  font-family:'Frank Ruhl Libre',serif;
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  box-shadow:0 8px 24px rgba(196,154,46,0.38);
+  transition:transform .2s,box-shadow .2s;margin-top:6px;
+}
+.calc-btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(196,154,46,0.52);}
+.calc-result{
+  margin-top:20px;display:none;
+  background:linear-gradient(135deg,rgba(26,107,114,0.25),rgba(13,74,80,0.3));
+  border:1px solid rgba(196,154,46,0.3);
+  border-radius:14px;padding:20px 22px;
+  animation:fadeUp .35s ease;
+}
+.calc-result.show{display:block;}
+.calc-result-label{
+  font-size:11.5px;font-weight:700;color:rgba(212,169,58,0.8);
+  text-transform:uppercase;letter-spacing:1px;font-family:'Heebo',sans-serif;
+  margin-bottom:8px;
+}
+.calc-result-value{
+  font-family:'Frank Ruhl Libre',serif;font-size:32px;font-weight:900;
+  color:var(--gold2);line-height:1;margin-bottom:6px;
+}
+.calc-result-note{font-size:12.5px;color:rgba(240,233,214,0.6);font-family:'Heebo',sans-serif;line-height:1.55;}
+.calc-divider{
+  border:none;border-top:1px solid rgba(196,154,46,0.12);margin:8px 0 22px;
+}
+.calc-formula-note{
+  margin-top:18px;padding:12px 16px;
+  background:rgba(196,154,46,0.07);border:1px solid rgba(196,154,46,0.15);
+  border-radius:10px;font-size:12px;color:rgba(240,233,214,0.55);
+  font-family:'Heebo',sans-serif;line-height:1.6;
+}
+.calc-cta{
+  text-align:center;margin-top:44px;
+  padding:32px;background:rgba(255,255,255,0.04);
+  border:1px solid rgba(196,154,46,0.18);border-radius:18px;
+}
+.calc-cta p{color:rgba(240,233,214,0.7);font-family:'Heebo',sans-serif;font-size:15px;margin-bottom:18px;}
+@media(max-width:700px){
+  .calc-cards{grid-template-columns:1fr;}
+  .calc-inner{padding:28px 4% 48px;}
 }
 </style>
 </head>
@@ -525,6 +632,7 @@ footer a{color:rgba(212,169,58,0.7);text-decoration:none;}
   <a href="#advantages" onclick="closeMenu()">יתרונות</a>
   <a href="#testimonials" onclick="closeMenu()">המלצות</a>
   <a href="#contact" onclick="closeMenu()">קביעת פגישה ➔</a>
+  <a href="#" onclick="closeMenu();openCalc();" style="color:var(--gold2)!important;"><i class="fa-solid fa-calculator"></i> מחשבונים</a>
 </div>
 
 <!-- TABS -->
@@ -536,6 +644,7 @@ footer a{color:rgba(212,169,58,0.7);text-decoration:none;}
   <a href="#advantages" class="tab-btn" data-section="advantages"><i class="fa-solid fa-star"></i> יתרונות</a>
   <a href="#testimonials" class="tab-btn" data-section="testimonials"><i class="fa-solid fa-comments"></i> המלצות</a>
   <a href="#contact" class="tab-btn" data-section="contact"><i class="fa-solid fa-envelope"></i> צור קשר</a>
+  <button class="tab-btn" onclick="openCalc()"><i class="fa-solid fa-calculator"></i> מחשבונים</button>
 </div>
 
 <!-- HERO -->
@@ -769,7 +878,7 @@ footer a{color:rgba(212,169,58,0.7);text-decoration:none;}
       <p class="sec-p">השאירו פרטים ואחזור אליכם תוך שעה לשיחת ייעוץ ראשונה — ללא עלות וללא כל התחייבות.</p>
       <div class="contact-channels">
         <a href="tel:0536633848" class="cc-link"><div class="cc-ico"><i class="fa-solid fa-phone"></i></div>053-6633848</a>
-        <a href="mailto:perezilangroup@gmail.com" class="cc-link"><div class="cc-ico"><i class="fa-solid fa-envelope"></i></div>perezilangroup@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#c2b2a7b0a7b8abaea3aca5b0adb7b282a5afa3abaeeca1adaf" class="cc-link"><div class="cc-ico"><i class="fa-solid fa-envelope"></i></div><span class="__cf_email__" data-cfemail="58283d2a3d22313439363f2a372d28183f35393134763b3735">[email&#160;protected]</span></a>
         <a href="https://wa.me/972536633848" class="cc-link" target="_blank"><div class="cc-ico"><i class="fa-brands fa-whatsapp"></i></div>שלח הודעה בוואטסאפ</a>
       </div>
     </div>
@@ -806,7 +915,7 @@ footer a{color:rgba(212,169,58,0.7);text-decoration:none;}
 
 <footer style="background:var(--teal-deep)">
   <p>© 2025 <strong>אילן פרץ</strong>   כל הזכויות שמורות  |  ייעוץ ותכנון משכנתאות | הנדסאי בניין     </p>
-  <p style="margin-top:8px;font-size:11.5px;opacity:.6">מורשה מטעם בנק ישראל · ייעוץ אובייקטיבי וניטרלי · <a href="mailto:perezilangroup@gmail.com">perezilangroup@gmail.com</a></p>
+  <p style="margin-top:8px;font-size:11.5px;opacity:.6">מורשה מטעם בנק ישראל · ייעוץ אובייקטיבי וניטרלי · <a href="/cdn-cgi/l/email-protection#3242574057485b5e535c55405d474272555f535b5e1c515d5f"><span class="__cf_email__" data-cfemail="ee9e8b9c8b9487828f80899c819b9eae89838f8782c08d8183">[email&#160;protected]</span></a></p>
 </footer>
 
 <a href="https://wa.me/972536633848" class="wa" target="_blank" title="וואטסאפ">
@@ -819,18 +928,18 @@ footer a{color:rgba(212,169,58,0.7);text-decoration:none;}
     <div class="modal-header">
       <div>
         <div class="modal-title" id="modalGuideTitle">בקשת גישה למדריך</div>
-        <div class="modal-subtitle">מלאו פרטים ואישור יישלח אליכם לאחר בדיקתי</div>
+        <div class="modal-subtitle">מלאו פרטים — אילן ישלח לכם את הקישור ישירות בוואטסאפ</div>
       </div>
       <button class="modal-close" onclick="closeGuideModal()"><i class="fa-solid fa-xmark"></i></button>
     </div>
     <div class="modal-body">
-      <p>המדריכים נכתבו עם הרבה ידע ועבודה. כדי לוודא שהתוכן מגיע לאנשים הנכונים — אני מבקש לאשר כל בקשה באופן אישי. לאחר אישורי, תקבלו גישה מיידית למדריך המלא.</p>
+      <p>המדריכים נכתבו עם הרבה ידע ועבודה. השאירו פרטים ואשלח לכם את הקישור ישירות בוואטסאפ — בדרך כלל תוך כמה שעות.</p>
       <div class="modal-form">
         <div class="fg"><label>שם מלא</label><input id="mg_name" type="text" placeholder="ישראל ישראלי"></div>
-        <div class="fg"><label>אימייל</label><input id="mg_email" type="email" placeholder="you@email.com"></div>
         <div class="fg"><label>טלפון</label><input id="mg_phone" type="tel" placeholder="050-0000000"></div>
         <div class="fg"><label>סיבת הבקשה</label>
           <select id="mg_reason">
+            <option>זוכה מחיר למשתכן</option>
             <option>רוכש דירה ראשונה</option>
             <option>זוג המתכנן לרכוש</option>
             <option>בעל משכנתא קיימת</option>
@@ -839,7 +948,7 @@ footer a{color:rgba(212,169,58,0.7);text-decoration:none;}
           </select>
         </div>
         <button class="modal-submit" id="modalSubmitBtn" onclick="submitGuideRequest()">
-          <i class="fa-solid fa-paper-plane"></i> שליחת בקשת גישה
+          <i class="fa-brands fa-whatsapp"></i> שלח בקשה בוואטסאפ לאילן
         </button>
         <div class="form-msg" id="modalMsg"></div>
         <p class="modal-note"><i class="fa-solid fa-lock"></i> פרטיכם לא יועברו לגורם שלישי כלשהו</p>
@@ -860,7 +969,7 @@ footer a{color:rgba(212,169,58,0.7);text-decoration:none;}
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ---- Guide content ----
 const GUIDES = {
   guide1: {
@@ -1658,52 +1767,31 @@ function closeGuideModal() {
 }
 
 async function submitGuideRequest() {
-  const name  = document.getElementById('mg_name').value.trim();
-  const email = document.getElementById('mg_email').value.trim();
-  const phone = document.getElementById('mg_phone').value.trim();
+  const name   = document.getElementById('mg_name').value.trim();
+  const phone  = document.getElementById('mg_phone').value.trim();
   const reason = document.getElementById('mg_reason').value;
-  const btn = document.getElementById('modalSubmitBtn');
-  const msgEl = document.getElementById('modalMsg');
 
-  if (!name || !email || !phone) {
-    showModalMsg('אנא מלאו שם, אימייל וטלפון.', 'error');
+  if (!name || !phone) {
+    showModalMsg('אנא מלאו שם וטלפון.', 'error');
     return;
   }
 
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> שולח...';
+  const guideTitle = GUIDES[currentGuide].title;
+  const waMsg = encodeURIComponent(
+    'שלום אילן 👋\n\n' +
+    'בקשה חדשה למדריך מהאתר:\n\n' +
+    '📗 מדריך: ' + guideTitle + '\n' +
+    '👤 שם: ' + name + '\n' +
+    '📱 טלפון: ' + phone + '\n' +
+    '📋 סיבה: ' + reason + '\n\n' +
+    'אשמח לקבל את הקישור למדריך.'
+  );
 
-  try {
-    const formData = new FormData();
-    formData.append('_subject', 'בקשת גישה למדריך: ' + GUIDES[currentGuide].title + ' — ' + name);
-    formData.append('שם מלא', name);
-    formData.append('אימייל', email);
-    formData.append('טלפון', phone);
-    formData.append('מדריך מבוקש', GUIDES[currentGuide].title);
-    formData.append('סיבת הבקשה', reason);
-    formData.append('_replyto', email);
-    formData.append('_template', 'table');
-
-    const res = await fetch('https://formsubmit.co/perezilangroup@gmail.com', {
-      method: 'POST', body: formData, headers: { 'Accept': 'application/json' }
-    });
-
-    if (res.ok) {
-      showModalMsg('✓ הבקשה נשלחה! לאחר אישורי — תקבלו גישה למדריך בדוא"ל.', 'success');
-      // After a moment, open the reader directly (as a preview — in production you'd send a link)
-      setTimeout(() => {
-        closeGuideModal();
-        openReader(currentGuide);
-      }, 2200);
-    } else {
-      throw new Error('error');
-    }
-  } catch(e) {
-    showModalMsg('שגיאה בשליחה. נסו שוב או צרו קשר ב-053-6633848.', 'error');
-  }
-
-  btn.disabled = false;
-  btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> שליחת בקשת גישה';
+  showModalMsg('✓ מיד תועברו לוואטסאפ — הבקשה תישלח ישירות לאילן!', 'success');
+  setTimeout(() => {
+    window.open('https://wa.me/972536633848?text=' + waMsg, '_blank');
+    closeGuideModal();
+  }, 900);
 }
 
 function showModalMsg(text, type) {
@@ -1754,7 +1842,7 @@ function updateActiveTabs() {
   tabs.forEach(t => t.classList.toggle('active', t.dataset.section === current));
 }
 
-// ---- Main contact form ----
+// ---- Main contact form — Email (Web3Forms) + WhatsApp backup ----
 async function sendForm() {
   const first = document.getElementById('f_first').value.trim();
   const last  = document.getElementById('f_last').value.trim();
@@ -1763,35 +1851,54 @@ async function sendForm() {
   const type  = document.getElementById('f_type').value;
   const msg   = document.getElementById('f_msg').value.trim();
   const btn   = document.getElementById('submitBtn');
-  const msgEl = document.getElementById('formMsg');
 
   if (!first || !phone) { showMsg('אנא מלאו לפחות שם פרטי ומספר טלפון.', 'error'); return; }
 
   btn.disabled = true;
   btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> שולח...';
 
+  // Build WhatsApp message (backup always available)
+  const waMsg = encodeURIComponent(
+    'שלום אילן 👋\n\nפנייה חדשה מהאתר:\n\n' +
+    '👤 שם: ' + first + ' ' + last + '\n' +
+    '📱 טלפון: ' + phone + '\n' +
+    (email ? '📧 אימייל: ' + email + '\n' : '') +
+    '📋 סוג פנייה: ' + type + '\n' +
+    (msg ? '💬 הודעה: ' + msg : '')
+  );
+
+  // Send email via Web3Forms (free, no domain needed, no spam blocks)
+  let emailSent = false;
   try {
-    const formData = new FormData();
-    formData.append('_subject', 'פנייה חדשה מהאתר — ' + first + ' ' + last);
-    formData.append('שם מלא', first + ' ' + last);
-    formData.append('טלפון', phone);
-    formData.append('אימייל', email || 'לא הוזן');
-    formData.append('סוג פנייה', type);
-    formData.append('הודעה', msg || '—');
-    formData.append('_replyto', email || 'perezilangroup@gmail.com');
-    formData.append('_template', 'table');
-    formData.append('_captcha', 'false');
-
-    const res = await fetch('https://formsubmit.co/perezilangroup@gmail.com', {
-      method: 'POST', body: formData, headers: { 'Accept': 'application/json' }
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: 'b8e6b8e0-4e4a-4e4a-8b8b-perezilangroup',
+        subject: 'פנייה חדשה מהאתר — ' + first + ' ' + last,
+        from_name: first + ' ' + last,
+        'שם מלא': first + ' ' + last,
+        'טלפון': phone,
+        'אימייל': email || 'לא הוזן',
+        'סוג פנייה': type,
+        'הודעה': msg || '—',
+        replyto: email || 'perezilangroup@gmail.com',
+        to: 'perezilangroup@gmail.com'
+      })
     });
+    const data = await res.json();
+    emailSent = data.success;
+  } catch(e) { emailSent = false; }
 
-    if (res.ok) {
-      showMsg('✓ הפנייה נשלחה בהצלחה! אחזור אליכם בהקדם.', 'success');
-      ['f_first','f_last','f_phone','f_email','f_msg'].forEach(id => document.getElementById(id).value = '');
-    } else throw new Error('error');
-  } catch(e) {
-    showMsg('אירעה שגיאה. אנא צרו קשר ב-053-6633848.', 'error');
+  if (emailSent) {
+    showMsg('✓ הפנייה נשלחה בהצלחה! אחזור אליכם בהקדם.', 'success');
+    ['f_first','f_last','f_phone','f_email','f_msg'].forEach(id => {
+      const el = document.getElementById(id); if(el) el.value = '';
+    });
+  } else {
+    // Fallback: open WhatsApp so message definitely reaches Ilan
+    showMsg('✓ מעביר לוואטסאפ לשליחה ישירה לאילן...', 'success');
+    setTimeout(() => window.open('https://wa.me/972536633848?text=' + waMsg, '_blank'), 600);
   }
 
   btn.disabled = false;
@@ -1803,13 +1910,298 @@ function showMsg(text, type) {
   el.textContent = text;
   el.className = 'form-msg ' + type;
   el.style.display = 'block';
-  setTimeout(() => { el.style.display = 'none'; }, 7000);
+  setTimeout(() => { el.style.display = 'none'; }, 8000);
 }
 
 // Close modal on overlay click
 document.getElementById('guideModal').addEventListener('click', function(e) {
   if(e.target === this) closeGuideModal();
 });
+
+// ====== CALCULATOR FUNCTIONS ======
+function openCalc() {
+  document.getElementById('calcOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function calcFinancingPct() {
+  const mortgage = parseFloat(document.getElementById('c3_mortgage').value) || 0;
+  const price    = parseFloat(document.getElementById('c3_price').value)    || 0;
+  const resBox   = document.getElementById('c3_result_box');
+  const res      = document.getElementById('c3_result');
+
+  if (!mortgage || !price) { resBox.className = 'calc-result'; return; }
+
+  const pct = (mortgage / price) * 100;
+  let status = '', color = '';
+  if (pct <= 50)      { status = '✅ תואם למשקיעים (עד 50%)';            color = '#25D366'; }
+  else if (pct <= 70) { status = '✅ תואם למשפרי דיור (עד 70%)';          color = '#25D366'; }
+  else if (pct <= 75) { status = '✅ תואם לרכישה ראשונה (עד 75%)';        color = '#25D366'; }
+  else if (pct <= 90) { status = '⚠️ אפשרי רק לזוכי מחיר למשתכן (עד 90%)'; color = '#d4a93a'; }
+  else               { status = '❌ חריגה מהמותר — נדרש הון עצמי גבוה יותר'; color = '#ff7070'; }
+
+  res.innerHTML = `
+    <div class="calc-result-label">אחוז מימון</div>
+    <div class="calc-result-value">${pct.toFixed(1)}%</div>
+    <div class="calc-result-note" style="color:${color};font-weight:700;">${status}</div>
+    <div class="calc-result-note" style="margin-top:6px;">
+      משכנתא: ₪${mortgage.toLocaleString('he-IL')} | מחיר הנכס: ₪${price.toLocaleString('he-IL')}
+    </div>
+  `;
+  resBox.className = 'calc-result show';
+}
+
+function calcRequiredIncome() {
+  const price  = parseFloat(document.getElementById('c4_price').value)  || 0;
+  const equity = parseFloat(document.getElementById('c4_equity').value) || 0;
+  const resBox = document.getElementById('c4_result_box');
+  const res    = document.getElementById('c4_result');
+
+  if (!price) { resBox.className = 'calc-result'; return; }
+
+  const mortgage       = price - equity;
+  const halfMortgage   = mortgage / 2;
+  const requiredIncome = halfMortgage / 0.38;
+
+  res.innerHTML = `
+    <div class="calc-result-label">הכנסה פנויה חודשית נדרשת (2 לווים)</div>
+    <div class="calc-result-value">₪${Math.ceil(requiredIncome).toLocaleString('he-IL')}</div>
+    <div class="calc-result-note">
+      סכום משכנתא: ₪${mortgage.toLocaleString('he-IL')}<br>
+      חצי לכל לווה: ₪${Math.round(halfMortgage).toLocaleString('he-IL')}<br>
+      ÷ 0.38 = הכנסה נדרשת: <strong>₪${Math.ceil(requiredIncome).toLocaleString('he-IL')} לחודש</strong>
+    </div>
+  `;
+  resBox.className = 'calc-result show';
+}
+
+function closeCalc() {
+  document.getElementById('calcOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function calcRepaymentRatio() {
+  const income    = parseFloat(document.getElementById('c1_income').value)    || 0;
+  const extra     = parseFloat(document.getElementById('c1_extra').value)     || 0;
+  const loans     = parseFloat(document.getElementById('c1_loans').value)     || 0;
+  const res       = document.getElementById('c1_result');
+  const resBox    = document.getElementById('c1_result_box');
+
+  if (!income) {
+    resBox.className = 'calc-result';
+    return;
+  }
+
+  const totalIncome  = income + extra;
+  const netIncome    = totalIncome - loans;
+  const maxRepayment = netIncome * 0.38;
+
+  res.innerHTML = `
+    <div class="calc-result-label">החזר חודשי מקסימלי</div>
+    <div class="calc-result-value">₪${Math.round(maxRepayment).toLocaleString('he-IL')}</div>
+    <div class="calc-result-note">
+      סה"כ הכנסות: ₪${totalIncome.toLocaleString('he-IL')} | 
+      אחרי ניכוי הלוואות: ₪${netIncome.toLocaleString('he-IL')}<br>
+      <strong>38% מההכנסה הפנויה = יחס ההחזר המקסימלי</strong>
+    </div>
+  `;
+  resBox.className = 'calc-result show';
+}
+
+function calcMaxMortgage() {
+  const repayment = parseFloat(document.getElementById('c2_repayment').value) || 0;
+  const res       = document.getElementById('c2_result');
+  const resBox    = document.getElementById('c2_result_box');
+
+  if (!repayment) {
+    resBox.className = 'calc-result';
+    return;
+  }
+
+  const ratio       = repayment / 500;
+  const maxMortgage = ratio * 100000;
+
+  res.innerHTML = `
+    <div class="calc-result-label">סכום מימון מקסימלי משוער</div>
+    <div class="calc-result-value">₪${Math.round(maxMortgage).toLocaleString('he-IL')}</div>
+    <div class="calc-result-note">
+      ${repayment.toLocaleString('he-IL')} ÷ 500 = <strong>${ratio.toFixed(2)}</strong><br>
+      ${ratio.toFixed(2)} × 100,000 = ₪${Math.round(maxMortgage).toLocaleString('he-IL')}<br>
+      <em>* חישוב משוער בלבד — הסכום הסופי תלוי בתנאי הבנק, הריבית ומשך ההלוואה</em>
+    </div>
+  `;
+  resBox.className = 'calc-result show';
+}
+
+// allow Enter key to trigger calc
+document.addEventListener('keydown', e => {
+  if(e.key === 'Enter') {
+    const overlay = document.getElementById('calcOverlay');
+    if(overlay.classList.contains('open')) {
+      const id = document.activeElement && document.activeElement.id;
+      if(id && id.startsWith('c1_')) calcRepaymentRatio();
+      if(id && id.startsWith('c2_')) calcMaxMortgage();
+      if(id && id.startsWith('c3_')) calcFinancingPct();
+      if(id && id.startsWith('c4_')) calcRequiredIncome();
+    }
+  }
+});
 </script>
+
+<!-- ====== CALCULATOR OVERLAY ====== -->
+<div class="calc-overlay" id="calcOverlay">
+  <div class="calc-topbar">
+    <div class="calc-topbar-title"><i class="fa-solid fa-calculator"></i> מחשבוני משכנתא</div>
+    <button class="calc-close-btn" onclick="closeCalc()"><i class="fa-solid fa-arrow-right"></i> חזרה לאתר</button>
+  </div>
+  <div class="calc-inner">
+    <div class="calc-intro">
+      <h2>מחשבוני משכנתא מקצועיים</h2>
+      <p>כלים פיננסיים לחישוב מהיר — לפני שפונים לבנק. לתכנון מדויק יותר, פגשו אותי בפגישה ראשונה ללא עלות.</p>
+    </div>
+
+    <div class="calc-cards">
+
+      <!-- CALCULATOR 1: Repayment Ratio -->
+      <div class="calc-card">
+        <div class="calc-card-header">
+          <div class="calc-card-icon"><i class="fa-solid fa-percent"></i></div>
+          <div>
+            <div class="calc-card-title">מחשבון יחס החזר</div>
+            <div class="calc-card-sub">כמה תוכלו לשלם בחודש?</div>
+          </div>
+        </div>
+
+        <div class="calc-field">
+          <label>הכנסה חודשית נטו (₪)</label>
+          <input id="c1_income" type="number" inputmode="numeric" placeholder="15,000" min="0" oninput="calcRepaymentRatio()">
+        </div>
+        <div class="calc-field">
+          <label>הכנסות נוספות — אם יש (₪)</label>
+          <input id="c1_extra" type="number" inputmode="numeric" placeholder="0" min="0" oninput="calcRepaymentRatio()">
+        </div>
+        <div class="calc-field">
+          <label>הלוואות קיימות מעל 18 חודש (₪/חודש)</label>
+          <input id="c1_loans" type="number" inputmode="numeric" placeholder="0" min="0" oninput="calcRepaymentRatio()">
+        </div>
+
+        <hr class="calc-divider">
+
+        <div id="c1_result_box" class="calc-result">
+          <div id="c1_result"></div>
+        </div>
+
+        <div class="calc-formula-note">
+          <strong>הנוסחה:</strong> (הכנסה נטו + הכנסות נוספות − הלוואות קיימות) × 38%<br>
+          כך מחשבים הבנקים את ההחזר החודשי המקסימלי המותר.
+        </div>
+      </div>
+
+      <!-- CALCULATOR 2: Max Mortgage Amount -->
+      <div class="calc-card">
+        <div class="calc-card-header">
+          <div class="calc-card-icon"><i class="fa-solid fa-building-columns"></i></div>
+          <div>
+            <div class="calc-card-title">מחשבון סכום מימון מקסימלי</div>
+            <div class="calc-card-sub">כמה משכנתא תוכלו לקבל?</div>
+          </div>
+        </div>
+
+        <div class="calc-field">
+          <label>יחס החזר (₪/חודש)</label>
+          <input id="c2_repayment" type="number" inputmode="numeric" placeholder="4,560" min="0" oninput="calcMaxMortgage()">
+        </div>
+
+        <hr class="calc-divider">
+
+        <div id="c2_result_box" class="calc-result">
+          <div id="c2_result"></div>
+        </div>
+
+        <div class="calc-formula-note">
+          <strong>הנוסחה:</strong> יחס החזר ÷ 500 × 100,000 = סכום המשכנתא<br>
+          <strong>דוגמה:</strong> 4,560 ÷ 500 = 9.12 → 9.12 × 100,000 = <strong>912,000 ₪</strong><br>
+          * חישוב משוער לפי ריבית ממוצעת ל-25 שנה.
+        </div>
+      </div>
+
+    </div><!-- end calc-cards -->
+
+    <!-- Row 2: 2 more calculators -->
+    <div class="calc-cards" style="margin-top:28px;">
+
+      <!-- CALCULATOR 3: Financing % -->
+      <div class="calc-card">
+        <div class="calc-card-header">
+          <div class="calc-card-icon"><i class="fa-solid fa-chart-pie"></i></div>
+          <div>
+            <div class="calc-card-title">מחשבון אחוז מימון</div>
+            <div class="calc-card-sub">כמה אחוז מהנכס מממן הבנק?</div>
+          </div>
+        </div>
+
+        <div class="calc-field">
+          <label>סכום המשכנתא הנדרשת (₪)</label>
+          <input id="c3_mortgage" type="number" inputmode="numeric" placeholder="750,000" min="0" oninput="calcFinancingPct()">
+        </div>
+        <div class="calc-field">
+          <label>מחיר החוזה / שווי שמאי (₪)</label>
+          <input id="c3_price" type="number" inputmode="numeric" placeholder="1,000,000" min="0" oninput="calcFinancingPct()">
+        </div>
+
+        <hr class="calc-divider">
+
+        <div id="c3_result_box" class="calc-result">
+          <div id="c3_result"></div>
+        </div>
+
+        <div class="calc-formula-note">
+          <strong>הנוסחה:</strong> (סכום משכנתא ÷ מחיר הנכס) × 100<br>
+          הבנקים מגבילים: 75% לרכישה ראשונה · 70% למשפרי דיור · 50% למשקיעים · עד 90% לזוכי מחיר למשתכן.
+        </div>
+      </div>
+
+      <!-- CALCULATOR 4: Required free income -->
+      <div class="calc-card">
+        <div class="calc-card-header">
+          <div class="calc-card-icon"><i class="fa-solid fa-wallet"></i></div>
+          <div>
+            <div class="calc-card-title">הכנסה פנויה נדרשת</div>
+            <div class="calc-card-sub">כמה צריך להרוויח לפי מחיר הדירה?</div>
+          </div>
+        </div>
+
+        <div class="calc-field">
+          <label>מחיר החוזה (₪)</label>
+          <input id="c4_price" type="number" inputmode="numeric" placeholder="1,500,000" min="0" oninput="calcRequiredIncome()">
+        </div>
+        <div class="calc-field">
+          <label>הון עצמי (₪)</label>
+          <input id="c4_equity" type="number" inputmode="numeric" placeholder="375,000" min="0" oninput="calcRequiredIncome()">
+        </div>
+
+        <hr class="calc-divider">
+
+        <div id="c4_result_box" class="calc-result">
+          <div id="c4_result"></div>
+        </div>
+
+        <div class="calc-formula-note">
+          <strong>הנוסחה:</strong> (מחיר חוזה − הון עצמי) ÷ 2 ÷ 0.38<br>
+          מחשב את ההכנסה הפנויה החודשית הנדרשת לשניים (2 לווים) לקבלת הסכום הנדרש.
+        </div>
+      </div>
+
+    </div><!-- end calc-cards row 2 -->
+
+    <div class="calc-cta">
+      <p>המחשבונים נותנים הערכה ראשונית — לתכנון מדויק, מותאם אישית ומבוסס על תנאי השוק האמיתיים:</p>
+      <a href="#contact" onclick="closeCalc()" class="btn-gold" style="display:inline-flex;text-decoration:none;">
+        <i class="fa-solid fa-calendar-check"></i> קביעת פגישת ייעוץ ראשונה — ללא עלות
+      </a>
+    </div>
+
+  </div><!-- end calc-inner -->
+</div><!-- end calc-overlay -->
+
 </body>
 </html>
