@@ -2199,66 +2199,7 @@ document.addEventListener('keydown', e => {
         <i class="fa-solid fa-calendar-check"></i> קביעת פגישת ייעוץ ראשונה — ללא עלות
       </a>
     </div>
-    <div class="calc-cards" style="margin-top:28px;">
-      <div class="calc-card">
-        <div class="calc-card-header">
-          <div class="calc-card-icon"><i class="fa-solid fa-calculator"></i></div>
-          <div>
-            <div class="calc-card-title">מחשבון מס רכישה 2026</div>
-            <div class="calc-card-sub">דירה יחידה, שנייה או מגרש</div>
-          </div>
-        </div>
-        <div class="calc-field">
-          <label>סוג הנכס / עסקה</label>
-          <select id="c5_type" onchange="calcPurchaseTax()" style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(196,154,46,0.2); background:rgba(255,255,255,0.07); color:var(--cream); outline:none;">
-            <option value="single">דירה יחידה (מגורים)</option>
-            <option value="second">דירה נוספת (השקעה)</option>
-            <option value="land">מגרש / קרקע</option>
-          </select>
-        </div>
-        <div class="calc-field" style="margin-top:10px;">
-          <label>מחיר הנכס (₪)</label>
-          <input id="c5_price" type="number" inputmode="numeric" placeholder="2,000,000" min="0" oninput="calcPurchaseTax()">
-        </div>
-        <hr class="calc-divider">
-        <div id="c5_result_box" class="calc-result">
-          <div id="c5_result"></div>
-        </div>
-        <div class="calc-formula-note">
-          חישוב מעודכן ל-2026: דירה יחידה, שנייה או מגרש.
-        </div>
-      </div>
-    </div>```
-
----
-
-### שלב 2: הוספת ה"מוח" (החישוב)
-עכשיו, תרד עד **סוף סוף הקובץ**. ממש לשורה האחרונה שכתוב בה `</script>`.
-תלחץ אנטר שורה אחת **מעל** ה-`</script>` ותדביק שם את זה:
-
-```javascript
-function calcPurchaseTax() {
-  const price = parseFloat(document.getElementById('c5_price').value || 0);
-  const type = document.getElementById('c5_type').value;
-  let tax = 0;
-  if (price <= 0) return;
-
-  if (type === 'single') {
-    if (price <= 1978745) tax = 0;
-    else if (price <= 2347040) tax = (price - 1978745) * 0.035;
-    else if (price <= 6055070) tax = 12890 + (price - 2347040) * 0.05;
-    else if (price <= 20183565) tax = 198291 + (price - 6055070) * 0.08;
-    else tax = 1328571 + (price - 20183565) * 0.10;
-  } else if (type === 'second') {
-    tax = price <= 6055070 ? price * 0.08 : (484405 + (price - 6055070) * 0.10);
-  } else {
-    tax = price * 0.06;
-  }
-
-  const out = document.getElementById('c5_result');
-  out.innerText = "₪ " + Math.floor(tax).toLocaleString();
-  document.getElementById('c5_result_box').classList.add('active');
-}
+    
 
   </div><!-- end calc-inner -->
 </div><!-- end calc-overlay -->
