@@ -2205,30 +2205,3 @@ document.addEventListener('keydown', e => {
 
 </body>
 </html>
-<style>
-/* 1. תיקון רווחים בין הקוביות - מבלי להזיז אותן מהמרכז */
-.hero-stats {
-    display: flex !important;
-    gap: 20px !important;           /* יוצר את המרווח שביקשת */
-    justify-content: center !important; 
-    flex-wrap: wrap !important;     /* מאפשר להן לרדת שורה בטלפון בצורה יפה */
-}
-
-/* 2. תיקון התמונה שלא תהיה אליפסה - בשיטה שלא מזיזה את התגיות הלבנות */
-.photo-frame img {
-    aspect-ratio: 1 / 1 !important; /* מכריח צורה של עיגול מושלם */
-    object-fit: cover !important;   /* מוודא שהפנים לא יימתחו */
-    height: auto !important;        /* מונע מהגובה להימתח בכוח */
-}
-
-/* 3. התאמה לנייד - כדי שהקוביות לא ייראו צפופות */
-@media (max-width: 768px) {
-    .hero-stats {
-        gap: 12px !important;
-    }
-    /* מוודא שהתמונה לא גדולה מדי למסך של טלפון */
-    .photo-frame img {
-        max-width: 80vw !important; 
-    }
-}
-</style>
