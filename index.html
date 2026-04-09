@@ -2205,32 +2205,3 @@ document.addEventListener('keydown', e => {
 
 </body>
 </html>
-<style>
-/* תיקון רווחים ומבנה בנייד בלבד */
-@media screen and (max-width: 600px) {
-    /* מוודא שהקוביות ירדו שורה ולא יימחצו */
-    .hero-stats {
-        display: block !important;
-        width: 100% !important;
-        text-align: center !important;
-    }
-
-    /* נותן לכל קוביה מרווח מלמטה כדי שלא יידבקו */
-    .exp-chip {
-        display: block !important;
-        margin: 15px auto !important; /* מרכז את הקוביה ונותן רווח של 15 פיקסלים */
-        width: 80% !important;        /* גודל נוח לנייד */
-    }
-
-    /* מתקן את התמונה שתהיה עגולה ולא אליפסה */
-    .photo-frame img {
-        width: 200px !important;
-        height: 200px !important;
-        aspect-ratio: 1 / 1 !important;
-        object-fit: cover !important;
-        border-radius: 50% !important;
-        margin: 0 auto !important;
-        display: block !important;
-    }
-}
-</style>
