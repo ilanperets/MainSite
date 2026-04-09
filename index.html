@@ -2205,3 +2205,18 @@ document.addEventListener('keydown', e => {
 
 </body>
 </html>
+<style>
+/* תיקון לתמונה שלא תימתח */
+.photo-frame img {
+    aspect-ratio: 1 / 1 !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+}
+
+/* יצירת רווח בין הקוביות */
+.hero-stats {
+    gap: 20px !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+}
+</style>
