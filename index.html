@@ -2206,17 +2206,49 @@ document.addEventListener('keydown', e => {
 </body>
 </html>
 <style>
-/* תיקון לתמונה שלא תימתח */
-.photo-frame img {
-    aspect-ratio: 1 / 1 !important;
-    object-fit: cover !important;
-    border-radius: 50% !important;
+/* תיקון התמונה - שתהיה עגולה ולא מעוכה */
+.photo-frame {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
 }
 
-/* יצירת רווח בין הקוביות */
+.photo-frame img {
+    width: 280px !important;    /* גודל קבוע לתמונה */
+    height: 280px !important;   /* גובה זהה לרוחב ליצירת עיגול */
+    aspect-ratio: 1 / 1 !important;
+    object-fit: cover !important;
+    border-radius: 50% !important; /* הופך לעיגול מושלם */
+    border: 4px solid #bfa04d !important; /* מוסיף מסגרת זהב יוקרתית */
+}
+
+/* תיקון הקוביות - שיהיו מיושרות ומרווחות */
 .hero-stats {
-    gap: 20px !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
+    display: flex !important;
+    flex-wrap: wrap !important;     /* מאפשר לקוביות לרדת שורה בנייד */
+    justify-content: center !important; /* מרכוז מתחת לכפתורים */
+    gap: 20px !important;           /* רווח שווה בין הקוביות */
+    margin-top: 30px !important;    /* רווח בין הכפתורים לקוביות */
+    width: 100% !important;         /* תופס את כל רוחב המסך למרכוז מושלם */
+}
+
+/* עיצוב הקוביה עצמה שתיראה אחידה */
+.exp-chip {
+    min-width: 140px !important;
+    background-color: #063c3c !important; /* צבע כהה יוקרתי */
+    padding: 15px !important;
+    border-radius: 12px !important;
+}
+
+/* התאמה מיוחדת לנייד */
+@media (max-width: 600px) {
+    .photo-frame img {
+        width: 220px !important; /* תמונה קצת יותר קטנה בנייד */
+        height: 220px !important;
+    }
+    
+    .hero-stats {
+        gap: 10px !important;   /* רווח קטן יותר בנייד שלא יצטופפו */
+    }
 }
 </style>
