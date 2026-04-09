@@ -2205,3 +2205,25 @@ document.addEventListener('keydown', e => {
 
 </body>
 </html>
+<style>
+/* הקוד הזה פועל רק בטלפונים (מסכים קטנים מ-768 פיקסלים) */
+@media (max-width: 768px) {
+    
+    /* מסדר את הקוביות אחת מתחת לשנייה עם רווח יפה */
+    .hero-stats {
+        display: flex !important;
+        flex-direction: column !important; /* הופך משורה לטור */
+        align-items: center !important;    /* ממרכז אותן */
+        gap: 15px !important;              /* רווח בין קוביה לקוביה */
+        margin: 20px auto !important;
+    }
+
+    /* שומר על התמונה עגולה בטלפון */
+    .photo-frame img {
+        aspect-ratio: 1 / 1 !important;
+        object-fit: cover !important;
+        width: 70vw !important; /* גודל שמתאים לרוחב הטלפון */
+        height: auto !important;
+    }
+}
+</style>
