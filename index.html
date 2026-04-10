@@ -2203,63 +2203,6 @@ document.addEventListener('keydown', e => {
 
   </div><!-- end calc-inner -->
 </div><!-- end calc-overlay -->
-<div class="calc-cards" style="margin-top:28px; padding: 0 15px;">
-  <div class="calc-card" style="max-width: 500px; margin: 0 auto; background: rgba(255,255,255,0.05); border: 1px solid rgba(196,154,46,0.3); border-radius: 15px; padding: 20px;">
-    <div class="calc-card-header" style="display: flex; align-items: center; margin-bottom: 15px;">
-      <div class="calc-card-icon" style="color: #c49a2e; font-size: 24px; margin-left: 15px;"><i class="fa-solid fa-coins"></i></div>
-      <div>
-        <div class="calc-card-title" style="color: #fff; font-weight: bold;">מחשבון מס רכישה 2026</div>
-        <div class="calc-card-sub" style="color: #ccc; font-size: 13px;">דירה יחידה, שנייה או מגרש</div>
-      </div>
-    </div>
 
-    <div class="calc-field" style="margin-bottom: 15px;">
-      <label style="display: block; color: #fff; margin-bottom: 5px;">סוג העסקה</label>
-      <select id="c5_type" onchange="calcPurchaseTax()" style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(196,154,46,0.2); background:rgba(0,0,0,0.3); color:white; outline:none;">
-        <option value="single">דירה יחידה (מגורים)</option>
-        <option value="second">דירה נוספת (השקעה)</option>
-        <option value="land">מגרש / קרקע</option>
-      </select>
-    </div>
-
-    <div class="calc-field" style="margin-bottom: 15px;">
-      <label style="display: block; color: #fff; margin-bottom: 5px;">מחיר הנכס (₪)</label>
-      <input id="c5_price" type="number" inputmode="numeric" placeholder="2,000,000" oninput="calcPurchaseTax()" style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(196,154,46,0.2); background:rgba(0,0,0,0.3); color:white; outline:none;">
-    </div>
-
-    <hr style="border: 0; border-top: 1px solid rgba(196,154,46,0.2); margin: 15px 0;">
-
-    <div id="c5_result_box" class="calc-result" style="text-align: center; padding: 15px; background: rgba(196,154,46,0.1); border-radius: 10px;">
-      <div id="c5_result" style="font-size: 24px; color: #c49a2e; font-weight: bold;">הזינו מחיר...</div>
-    </div>
-  </div>
-</div>
-
-<script>
-function calcPurchaseTax() {
-  const p = parseFloat(document.getElementById('c5_price').value || 0);
-  const t = document.getElementById('c5_type').value;
-  let tax = 0;
-  
-  if (p <= 0) {
-    document.getElementById('c5_result').innerText = "הזינו מחיר...";
-    return;
-  }
-  
-  if (t === 'single') {
-    if (p <= 1978745) tax = 0;
-    else if (p <= 2347040) tax = (p - 1978745) * 0.035;
-    else if (p <= 6055070) tax = 12890 + (p - 2347040) * 0.05;
-    else if (p <= 20183565) tax = 198291 + (p - 6055070) * 0.08;
-    else tax = 1328571 + (p - 20183565) * 0.10;
-  } else if (t === 'second') {
-    tax = p <= 6055070 ? p * 0.08 : (484405 + (p - 6055070) * 0.10);
-  } else { 
-    tax = p * 0.06; 
-  }
-  
-  document.getElementById('c5_result').innerText = "₪ " + Math.floor(tax).toLocaleString();
-}
-</script>
 </body>
 </html>
