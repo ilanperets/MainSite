@@ -2192,62 +2192,7 @@ document.addEventListener('keydown', e => {
       </div>
 
     </div><!-- end calc-cards row 2 -->
-<div class="calc-card">
-  <div class="calc-card-header">
-    <div class="calc-card-icon"><i class="fa-solid fa-coins"></i></div>
-    <div>
-      <div class="calc-card-title">מחשבון מס רכישה 2026</div>
-      <div class="calc-card-sub">דירה יחידה, שנייה או מגרש</div>
-    </div>
-  </div>
 
-  <div class="calc-field">
-    <label>סוג העסקה</label>
-    <select id="c5_type" onchange="runPurchaseTax()" style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(196,154,46,0.2); background:rgba(0,0,0,0.5); color:white; outline:none;">
-      <option value="single">דירה יחידה (מגורים)</option>
-      <option value="second">דירה נוספת (השקעה)</option>
-      <option value="land">מגרש / קרקע</option>
-    </select>
-  </div>
-
-  <div class="calc-field">
-    <label>מחיר הנכס (₪)</label>
-    <input id="c5_price" type="number" inputmode="numeric" placeholder="2,000,000" oninput="runPurchaseTax()">
-  </div>
-
-  <hr class="calc-divider">
-
-  <div id="c5_result_box" class="calc-result">
-    <div id="c5_result">הזינו מחיר...</div>
-  </div>
-</div>
-
-<script>
-// הפונקציה הזו מוצמדת ישירות למחשבון כדי שלא תצטרך לחפש את ה-JavaScript למטה
-function runPurchaseTax() {
-  const p = parseFloat(document.getElementById('c5_price').value || 0);
-  const t = document.getElementById('c5_type').value;
-  let tax = 0;
-  
-  if (p <= 0) {
-    document.getElementById('c5_result').innerText = "הזינו מחיר...";
-    return;
-  }
-  
-  if (t === 'single') {
-    if (p <= 1978745) tax = 0;
-    else if (p <= 2347040) tax = (p - 1978745) * 0.035;
-    else if (p <= 6055070) tax = 12890 + (p - 2347040) * 0.05;
-    else if (p <= 20183565) tax = 198291 + (p - 6055070) * 0.08;
-    else tax = 1328571 + (p - 20183565) * 0.10;
-  } else if (t === 'second') {
-    tax = p <= 6055070 ? p * 0.08 : (484405 + (p - 6055070) * 0.10);
-  } else { tax = p * 0.06; }
-  
-  document.getElementById('c5_result').innerText = "₪ " + Math.floor(tax).toLocaleString();
-  document.getElementById('c5_result_box').classList.add('active');
-}
-</script>
     <div class="calc-cta">
       <p>המחשבונים נותנים הערכה ראשונית — לתכנון מדויק, מותאם אישית ומבוסס על תנאי השוק האמיתיים:</p>
       <a href="#contact" onclick="closeCalc()" class="btn-gold" style="display:inline-flex;text-decoration:none;">
