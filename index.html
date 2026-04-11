@@ -2,15 +2,21 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="color-scheme" content="light only">
-<meta name="theme-color" content="#083b40">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="color-scheme" content="only light">
+<meta name="theme-color" content="#062d31">
+<meta name="supported-color-schemes" content="light">
 <title>אילן פרץ | יועץ משכנתאות | ליווי וניהול מקצועי לרוכשי דירה</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
+/* ===== FORCE DARK RENDERING ON ALL DEVICES ===== */
+html,body{background:#062d31;}
+body{background:#ffffff;}
+#hero{background:#062d31 !important;}
+
 /* ===== BRAND COLORS (exact match to business card) ===== */
 :root{
   --teal:#1a6b72;
@@ -33,7 +39,6 @@ html{scroll-behavior:smooth;}
 body{font-family:'Heebo','Heebo',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
 /* Force consistent color rendering across all platforms */
 *{-webkit-tap-highlight-color:transparent;}
-#hero{background:#083b40;background:linear-gradient(150deg,#062d31 0%,#083b40 25%,#0d4a50 55%,#1a6b72 85%,#083b40 100%)!important;}
 
 /* ====== NAV ====== */
 nav{
@@ -41,7 +46,9 @@ nav{
   height:66px;
   display:flex;align-items:center;justify-content:space-between;
   padding:0 5%;
+  background:#083b40;
   background:rgba(8,59,64,0.98);
+  -webkit-backdrop-filter:blur(20px);
   backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(196,154,46,0.25);
   transition:box-shadow .3s;
@@ -101,6 +108,9 @@ nav.scrolled{box-shadow:0 4px 28px rgba(7,55,60,0.5);}
 /* ====== HERO ====== */
 #hero{
   min-height:100vh;padding-top:110px;
+  background:#062d31;
+  background:-webkit-linear-gradient(330deg,#062d31 0%,#083b40 25%,#0d4a50 55%,#1a6b72 85%,#083b40 100%);
+  background:-moz-linear-gradient(330deg,#062d31 0%,#083b40 25%,#0d4a50 55%,#1a6b72 85%,#083b40 100%);
   background:linear-gradient(150deg,#062d31 0%,#083b40 25%,#0d4a50 55%,#1a6b72 85%,#083b40 100%);
   display:flex;align-items:center;position:relative;overflow:hidden;
 }
@@ -162,10 +172,10 @@ nav.scrolled{box-shadow:0 4px 28px rgba(7,55,60,0.5);}
   transition:all .2s;font-family:'Heebo',sans-serif;
 }
 .btn-outline-white:hover{background:rgba(255,255,255,0.13);border-color:rgba(240,233,214,0.45);}
-.hero-stats{display:flex;gap:0;align-items:stretch;}
-.stat{padding:14px 28px 14px 0;border-left:1px solid rgba(196,154,46,0.2);}
-.stat:first-child{padding-right:0;border-left:none;padding-left:0;}
-.stat:last-child{padding-left:28px;}
+.hero-stats{display:flex;gap:8px;align-items:stretch;}
+.stat{padding:14px 20px;border-left:1px solid rgba(196,154,46,0.2);}
+.stat:first-child{padding-right:20px;border-left:none;padding-left:0;}
+.stat:last-child{padding-left:20px;}
 .s-num{font-family:'Heebo',serif;font-size:30px;font-weight:900;color:var(--gold2);line-height:1;}
 .s-label{font-size:11px;color:rgba(240,233,214,0.6);font-weight:500;margin-top:4px;font-family:'Heebo',sans-serif;}
 
@@ -471,12 +481,45 @@ footer a{color:rgba(212,169,58,0.7);text-decoration:none;}
 /* RESPONSIVE */
 @media(max-width:900px){
   .nav-links{display:none;}.hamburger{display:flex;}
-  .hero-inner{flex-direction:column-reverse;padding:40px 5% 60px;text-align:center;}
-  .hero-photo{flex:none;display:flex;justify-content:center;margin-bottom:10px;}
-  .photo-frame{width:220px;height:280px;border-radius:50% 50% 50% 50% / 40% 40% 60% 60%;}
-  .photo-frame img{object-position:center 10%;}
+
+  /* ── Hero mobile ── */
+  #hero{
+    background:#062d31 !important;
+    background:-webkit-linear-gradient(330deg,#062d31 0%,#083b40 35%,#0d4a50 70%,#083b40 100%) !important;
+    background:linear-gradient(150deg,#062d31 0%,#083b40 35%,#0d4a50 70%,#083b40 100%) !important;
+    min-height:100dvh;
+  }
+  .hero-inner{flex-direction:column-reverse;padding:30px 5% 50px;text-align:center;gap:24px;}
+  .hero-content{max-width:100%;}
+
+  /* ── Photo ── */
+  .hero-photo{flex:none;display:flex;justify-content:center;align-items:center;}
+  .photo-frame{
+    width:190px;
+    height:240px;
+    border-radius:50% 50% 50% 50% / 40% 40% 60% 60%;
+    overflow:hidden;
+    background:#0d4a50;
+    box-shadow:0 0 0 3px rgba(196,154,46,0.4),0 12px 40px rgba(0,0,0,0.5);
+    position:relative;
+  }
+  .photo-frame::after{display:none;}
+  .photo-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 5%;
+    display:block;
+  }
   .fb1,.fb2{display:none;}
-  .hero-btns{justify-content:center;}.hero-stats{justify-content:center;}
+
+  /* ── Content ── */
+  .hero-btns{justify-content:center;}
+  .hero-stats{justify-content:center;flex-wrap:wrap;}
+  .hero-name{font-size:clamp(40px,10vw,60px);}
+  .hero-badge{font-size:10px;}
+
+  /* ── Rest ── */
   .about-grid{grid-template-columns:1fr;}.about-img-wrap{display:none;}
   .srv-grid{grid-template-columns:1fr 1fr;}
   .guides-grid{grid-template-columns:1fr;}
@@ -895,7 +938,7 @@ footer a{color:rgba(212,169,58,0.7);text-decoration:none;}
       <p class="sec-p">השאירו פרטים ואחזור אליכם תוך שעה לשיחת ייעוץ ראשונה — ללא עלות וללא כל התחייבות.</p>
       <div class="contact-channels">
         <a href="tel:0536633848" class="cc-link"><div class="cc-ico"><i class="fa-solid fa-phone"></i></div>053-6633848</a>
-        <a href="/cdn-cgi/l/email-protection#c2b2a7b0a7b8abaea3aca5b0adb7b282a5afa3abaeeca1adaf" class="cc-link"><div class="cc-ico"><i class="fa-solid fa-envelope"></i></div><span class="__cf_email__" data-cfemail="58283d2a3d22313439363f2a372d28183f35393134763b3735"><span class="__cf_email__" data-cfemail="8efeebfcebf4e7e2efe0e9fce1fbfecee9e3efe7e2a0ede1e3">perezilangroup@gmail.com</span></span></a>
+        <a href="/cdn-cgi/l/email-protection#c2b2a7b0a7b8abaea3aca5b0adb7b282a5afa3abaeeca1adaf" class="cc-link"><div class="cc-ico"><i class="fa-solid fa-envelope"></i></div><span class="__cf_email__" data-cfemail="58283d2a3d22313439363f2a372d28183f35393134763b3735"><span class="__cf_email__" data-cfemail="8efeebfcebf4e7e2efe0e9fce1fbfecee9e3efe7e2a0ede1e3">[email&#160;protected]</span></span></a>
         <a href="https://wa.me/972536633848" class="cc-link" target="_blank"><div class="cc-ico"><i class="fa-brands fa-whatsapp"></i></div>שלח הודעה בוואטסאפ</a>
       </div>
     </div>
@@ -932,7 +975,7 @@ footer a{color:rgba(212,169,58,0.7);text-decoration:none;}
 
 <footer style="background:var(--teal-deep)">
   <p>© 2025 <strong>אילן פרץ</strong>   כל הזכויות שמורות  |  ייעוץ ותכנון משכנתאות | הנדסאי בניין     </p>
-  <p style="margin-top:8px;font-size:11.5px;opacity:.6">רשום ומוסמך בכל הבנקים · ייעוץ אובייקטיבי וניטרלי · <a href="/cdn-cgi/l/email-protection#3242574057485b5e535c55405d474272555f535b5e1c515d5f"><span class="__cf_email__" data-cfemail="ee9e8b9c8b9487828f80899c819b9eae89838f8782c08d8183"><span class="__cf_email__" data-cfemail="1363766176697a7f727d74617c666353747e727a7f3d707c7e">perezilangroup@gmail.com</span></span></a></p>
+  <p style="margin-top:8px;font-size:11.5px;opacity:.6">רשום ומוסמך בכל הבנקים · ייעוץ אובייקטיבי וניטרלי · <a href="/cdn-cgi/l/email-protection#3242574057485b5e535c55405d474272555f535b5e1c515d5f"><span class="__cf_email__" data-cfemail="ee9e8b9c8b9487828f80899c819b9eae89838f8782c08d8183"><span class="__cf_email__" data-cfemail="1363766176697a7f727d74617c666353747e727a7f3d707c7e">[email&#160;protected]</span></span></a></p>
 </footer>
 
 <a href="https://wa.me/972536633848" class="wa" target="_blank" title="וואטסאפ">
